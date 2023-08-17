@@ -15,13 +15,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main
-        className={`flex min-h-screen flex-col items-center justify-center`}
-      >
+      <main className={``}>
+        <HomePage />
         <div className={styles.themeToggler}>
           <ThemeToggle />
         </div>
-        <HomePage />
       </main>
     </>
   );
