@@ -17,9 +17,11 @@ export default function AuthComponent() {
               cardMiddle ? styles.cardFront : styles.cardFrontafter
             } ${styles.page}`}
           >
+            <h1 className={styles.header}>Password</h1>
+            <p>Please Enter your Password</p>
             <div
               className={styles.nextIcon}
-              onClick={() => setCardFront(false)}
+              // onClick={() => setCardFront(false)}
             >
               <BsArrowRightShort size={20} color="white" />
             </div>
@@ -33,6 +35,10 @@ export default function AuthComponent() {
               cardBack ? styles.cardMiddle : styles.cardMiddleafter
             } ${styles.page}`}
           >
+            <h1 className={styles.header}>Email</h1>
+            <p>Please Enter your Email</p>
+
+            {/* <InputComponent label="Name" placeholder="Please Enter Your Name" /> */}
             <div
               className={styles.nextIcon}
               onClick={() => setCardMiddle(false)}
@@ -48,7 +54,7 @@ export default function AuthComponent() {
             <h1 className={styles.header}>Welcome</h1>
             <p>Please Enter your Name</p>
 
-            <InputComponent label="Name" placeholder="Please Enter Your Name" />
+            {/* <InputComponent label="Name" placeholder="Please Enter Your Name" /> */}
             <div className={styles.nextIcon} onClick={() => setCardBack(false)}>
               <BsArrowRightShort size={20} color="white" />
             </div>

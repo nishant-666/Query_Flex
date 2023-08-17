@@ -6,7 +6,7 @@ export function InputComponent({ placeholder }: commonInput) {
     <div
       className={`grid w-full max-w-sm items-center gap-1.5 ${styles.container}`}
     >
-      <input className={styles.input} type="text" placeholder={placeholder} />
+      <Input className={styles.input} type="text" placeholder={placeholder} />
     </div>
   );
 }
