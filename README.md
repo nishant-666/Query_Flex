@@ -1,6 +1,6 @@
 ## Product Name: MultiDB QueryGen
 
-### Description: MultiDB QueryGen is an all-in-one SQL command generator designed for developers working with various database systems. Whether you're using SQL, PostgreSQL, Firebase, MongoDB, Prisma, or other platforms, MultiDB QueryGen streamlines query creation and optimization.
+## MultiDB QueryGen is an all-in-one SQL command generator designed for developers working with various database systems. Whether you're using SQL, PostgreSQL, Firebase, MongoDB, Prisma, or other platforms, MultiDB QueryGen streamlines query creation and optimization.
 
 ### Features:
 
