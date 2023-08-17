@@ -1,11 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Auth.module.scss";
-import CardWithForm from "@/components/common/Card";
+import { InputComponent } from "@/components/common/Input";
+import { BsArrowRightShort } from "react-icons/bs";
 
 export default function AuthComponent() {
+  const [cardFront, setCardFront] = useState(true);
+  const [cardMiddle, setCardMiddle] = useState(true);
+  const [cardBack, setCardBack] = useState(true);
+
   return (
     <div className={styles.authMain}>
-      <CardWithForm />
+      <div className={styles.cardMain}>
+        {cardFront ? (
+          <div
+            className={`${
+              cardMiddle ? styles.cardFront : styles.cardFrontafter
+            } ${styles.page}`}
+          >
+            <div
+              className={styles.nextIcon}
+              onClick={() => setCardFront(false)}
+            >
+              <BsArrowRightShort size={20} color="white" />
+            </div>
+          </div>
+        ) : (
+          <></>
+        )}
+        {cardMiddle ? (
+          <div
+            className={`${
+              cardBack ? styles.cardMiddle : styles.cardMiddleafter
+            } ${styles.page}`}
+          >
+            <div
+              className={styles.nextIcon}
+              onClick={() => setCardMiddle(false)}
+            >
+              <BsArrowRightShort size={20} color="white" />
+            </div>
+          </div>
+        ) : (
+          <></>
+        )}
+        {cardBack ? (
+          <div className={`${styles.cardBack} ${styles.page}`}>
+            <h1 className={styles.header}>Welcome</h1>
+            <p>Please Enter your Name</p>
+
+            <InputComponent label="Name" placeholder="Please Enter Your Name" />
+            <div className={styles.nextIcon} onClick={() => setCardBack(false)}>
+              <BsArrowRightShort size={20} color="white" />
+            </div>
+          </div>
+        ) : (
+          <></>
+        )}
+      </div>
     </div>
   );
 }
