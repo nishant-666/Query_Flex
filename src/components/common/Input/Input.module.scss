@@ -1,10 +1,33 @@
 .container {
-  padding: 50px;
-
+  padding: 10px 30px;
+  display: flex;
+  justify-content: center;
   .input {
     margin-top: 7px;
     outline: none;
     background-color: white;
     border: 1px solid #cecece;
+    height: 40px;
+    padding-left: 10px;
+    font-size: 15px;
+    border-radius: 5px;
+    width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 10px 30px;
+
+    .input {
+      margin-top: 7px;
+      outline: none;
+      background-color: white;
+      border: 1px solid #cecece;
+      height: 40px;
+      padding-left: 10px;
+      font-size: 13px;
+      border-radius: 5px;
+    }
   }
 }
