@@ -7,6 +7,7 @@ export default function Auth() {
   return (
     <div className={styles.signupMain}>
       <Navbar />
+
       <AuthComponent />
     </div>
   );

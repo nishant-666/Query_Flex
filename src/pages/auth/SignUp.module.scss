@@ -1,7 +1,9 @@
 .signupMain {
-  height: 100vh;
+  min-height: 95vh;
+  height: auto;
   width: 100%;
   display: flex;
   justify-content: center;
-  padding-top: 20px;
+  // align-items: center;
+  transform-style: preserve-3d;
 }

@@ -17,7 +17,7 @@ export default function Navbar() {
         </button>
 
         <button onClick={() => router.push("/auth/sign-up")} className="btn">
-          Get Started For Free
+          Get Started
         </button>
       </section>
     </div>
