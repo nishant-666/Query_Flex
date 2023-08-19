@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Auth.module.scss";
 import InputComponent from "@/components/common/Input";
-import { BsArrowRightShort, BsDatabaseAdd } from "react-icons/bs";
+import { BsArrowRightShort } from "react-icons/bs";
 
 export default function AuthComponent() {
   const [cardFront, setCardFront] = useState(true);

@@ -1,0 +1,26 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  gap: 20px;
+  font-family: "Bricolage Grotesque";
+}
+
+.navbarLeft {
+  position: absolute;
+  left: 30px;
+  display: flex;
+  gap: 40px;
+}
+
+.navbarRight {
+  position: absolute;
+  right: 100px;
+  display: flex;
+  gap: 20px;
+}
+
+.navOption {
+  cursor: pointer;
+  font-size: 20px;
+}

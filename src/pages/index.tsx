@@ -1,8 +1,6 @@
 import Head from "next/head";
 import { api } from "@/utils/api";
-import HomePage from "@/pages/Home";
-import ThemeToggle from "@/components/Theme";
-import styles from "@/styles/Home.module.scss";
+import HomePage from "@/pages/home";
 
 export default function Home() {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
@@ -17,9 +15,6 @@ export default function Home() {
 
       <main className={``}>
         <HomePage />
-        <div className={styles.themeToggler}>
-          <ThemeToggle />
-        </div>
       </main>
     </>
   );
