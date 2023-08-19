@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { api } from "@/utils/api";
-import HomePage from "./home";
 import Navbar from "@/components/common/Navbar";
 import styles from "@/styles/Home.module.scss";
 
