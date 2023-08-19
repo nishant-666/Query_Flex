@@ -3,3 +3,27 @@
   right: 20px;
   top: 25px;
 }
+
+.homeMain {
+  min-height: 95vh;
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+  padding-top: 20px;
+  transform-style: preserve-3d;
+
+  .header {
+    font-family: "Bricolage Grotesque";
+    margin-top: 140px;
+    background-clip: text; /* Clip the background to the text */
+    -webkit-background-clip: text; /* For Safari/WebKit browsers */
+    color: transparent; /* Hide the text color */
+    background-image: linear-gradient(
+      to right,
+      #00f5a0,
+      #00d9f5
+    ); /* Gradient colors and direction */
+  }
+}
