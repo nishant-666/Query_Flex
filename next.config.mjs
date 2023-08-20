@@ -10,6 +10,12 @@ const config = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  cssModules: true,
+  cssLoaderOptions: {
+    importLoaders: 1,
+    localIdentName: "[local]_[hash:base64:5]",
+  },
+
   /**
    * If you are using `appDir` then you must comment the below `i18n` config out.
    *

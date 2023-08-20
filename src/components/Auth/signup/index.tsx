@@ -1,29 +1,25 @@
 import React, { useState } from "react";
-import styles from "./Auth.module.scss";
+import styles from "../Auth.module.scss";
 import InputComponent from "@/components/common/Input";
 import { BsArrowRightShort } from "react-icons/bs";
-import { signUp } from "@/firebase/auth";
+import { useRouter } from "next/router";
+import useSignUp from "../hooks/useSignUp";
 
-export default function AuthComponent() {
-  const [cardFront, setCardFront] = useState(true);
+export default function SignUp() {
+  const {
+    error,
+    isError,
+    setIsError,
+    formData,
+    getFormData,
+    handleSubmit,
+    signUpComplete,
+  } = useSignUp();
+  const router = useRouter();
+  const [cardFront] = useState(true);
   const [cardMiddle, setCardMiddle] = useState(true);
   const [cardBack, setCardBack] = useState(true);
-  const [isError, setIsError] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
 
-  const getFormData = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setIsError(false);
-    const { name, value } = event.target;
-    let input = { [name]: value };
-
-    setFormData((prev) => ({ ...prev, ...input }));
-  };
-
-  console.log(formData);
   return (
     <div className={styles.authMain}>
       <div className={styles.cardMain}>
@@ -35,7 +31,6 @@ export default function AuthComponent() {
           >
             <h1 className={styles.header}>Password</h1>
 
-            {/* <p className={styles.subheader}>Please Enter your Password</p> */}
             <InputComponent
               name="password"
               type="password"
@@ -45,13 +40,13 @@ export default function AuthComponent() {
             <div
               className={styles.nextIcon}
               onClick={() => {
-                formData.password ? signUp() : setIsError(true);
+                formData.password ? handleSubmit() : setIsError(true);
               }}
             >
               <BsArrowRightShort size={20} color="white" />
             </div>
             <span className={styles.error}>
-              {isError ? "Password Please.." : ""}
+              {isError ? (error ? error : "Password Please") : ""}
             </span>
           </div>
         ) : (
@@ -66,7 +61,6 @@ export default function AuthComponent() {
             <h1 className={styles.header}>
               Your Email {formData.email ? `is ${formData.email}` : ""}
             </h1>
-            {/* <p className={styles.subheader}>Please Enter your Email</p> */}
 
             <InputComponent
               name="email"
@@ -112,6 +106,16 @@ export default function AuthComponent() {
             <span className={styles.error}>
               {isError ? "Name is Required" : ""}
             </span>
+
+            <p className={styles.isSignIn}>
+              Already Have an Account?{" "}
+              <span
+                onClick={() => router.push("/auth/sign-in")}
+                className={styles.signIn}
+              >
+                Sign In
+              </span>
+            </p>
           </div>
         ) : (
           <></>

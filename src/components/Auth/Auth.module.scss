@@ -35,6 +35,11 @@
   .cardMiddle {
     transform: rotate(-17deg);
   }
+
+  .cardMiddleSignIn {
+    transform: rotate(0deg);
+  }
+
   .cardMiddleafter {
     transform: rotate(0deg);
   }
@@ -58,12 +63,13 @@
   }
 
   .error {
-    font-size: 13px;
+    font-size: 12.5px;
     color: #e62e05;
     margin-top: -5px;
-    margin-left: 45px;
+    margin-left: 40px;
     font-family: "Bricolage Grotesque";
-    animation: shake 0.6s 2;
+    font-weight: 600;
+    animation: 1s ease-out;
   }
 
   .nextIcon {
@@ -71,9 +77,20 @@
     padding: 10px;
     border-radius: 50%;
     position: absolute;
-    right: 30px;
-    bottom: 30px;
+    right: 15px;
+    bottom: 15px;
     cursor: pointer;
+  }
+
+  .isSignIn {
+    font-size: 14px;
+    margin-left: 40px;
+    margin-top: 5px;
+    cursor: pointer;
+    animation: fade-in 1s ease-out;
+    .signIn {
+      color: #10b97e;
+    }
   }
 }
 
@@ -83,6 +100,16 @@
     justify-content: center;
     align-items: center;
     font-family: "Bricolage Grotesque";
+    .isSignIn {
+      font-size: 12.5px;
+      margin-left: 30px;
+      margin-top: 5px;
+      cursor: pointer;
+      animation: fade-in 1s ease-out;
+      .signIn {
+        color: #10b97e;
+      }
+    }
     .cardMain {
       width: 75vw;
       height: 35vh;
@@ -105,13 +132,31 @@
     }
 
     .error {
-      font-size: 12px;
-      margin-left: 40px;
+      font-size: 12.5px;
       color: #e62e05;
       margin-top: -5px;
+      margin-left: 30px;
       font-family: "Bricolage Grotesque";
-      animation: shake 0.6s 2;
+      font-weight: 600;
+      animation: 1s ease-out;
     }
+  }
+}
+
+.midSignUp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fade-from-right 0.5s ease-out;
+  .header {
+    text-align: center;
+    font-family: "Bricolage Grotesque";
+    font-size: 3em;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: slide-in-left 1s ease-in;
+    background-image: linear-gradient(to right, #00f5a0, #00d9f5);
   }
 }
 
@@ -138,6 +183,33 @@
   }
   to {
     transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-from-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(80%);
+    opacity: 0.2;
+  }
+  to {
+    transform: translateX(60%);
+    opacity: 0.4;
+  }
+  to {
+    transform: translateX(40%);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateX(20%);
+    opacity: 0.8;
+  }
+  to {
+    transform: translateX(0%);
     opacity: 1;
   }
 }

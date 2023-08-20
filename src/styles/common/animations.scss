@@ -32,18 +32,45 @@
   }
   to {
     transform: translateY(60%);
-    opacity: 0.2;
+    opacity: 0.4;
   }
   to {
     transform: translateY(40%);
-    opacity: 0.2;
+    opacity: 0.6;
   }
   to {
     transform: translateY(20%);
-    opacity: 0.2;
+    opacity: 0.8;
   }
   to {
     transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-from-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(80%);
     opacity: 0.2;
+  }
+  to {
+    transform: translateX(60%);
+    opacity: 0.4;
+  }
+  to {
+    transform: translateX(40%);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateX(20%);
+    opacity: 0.8;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
   }
 }

@@ -12,7 +12,10 @@ export default function Navbar() {
       </section>
 
       <section className={styles.navbarRight}>
-        <button className={`btn btn-success ${styles.signInBtn}`}>
+        <button
+          onClick={() => router.push("/auth/sign-in")}
+          className={`btn btn-success ${styles.signInBtn}`}
+        >
           Sign In
         </button>
 

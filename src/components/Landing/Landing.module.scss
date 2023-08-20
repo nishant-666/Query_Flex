@@ -1,0 +1,45 @@
+.landingMain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  height: auto;
+  text-align: center;
+  animation: fade-from-right 0.5s ease-out;
+  .header {
+    text-align: center;
+    font-family: "Bricolage Grotesque";
+    font-size: 3em;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, #00f5a0, #00d9f5);
+  }
+}
+
+@keyframes fade-from-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(80%);
+    opacity: 0.2;
+  }
+  to {
+    transform: translateX(60%);
+    opacity: 0.4;
+  }
+  to {
+    transform: translateX(40%);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateX(20%);
+    opacity: 0.8;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
