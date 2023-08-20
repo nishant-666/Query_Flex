@@ -2,8 +2,10 @@ import Head from "next/head";
 import { api } from "@/utils/api";
 import Navbar from "@/components/common/Navbar";
 import styles from "@/styles/Home.module.scss";
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const router = useRouter();
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
 
   return (
@@ -16,9 +18,21 @@ export default function Home() {
       <>
         <Navbar />
         <section
-          className={`prose flex justify-center md:container lg:prose-xl md:mx-auto ${styles.homeMain}`}
+          className={`prose flex md:container lg:prose-xl md:mx-auto ${styles.homeMain}`}
         >
-          <h1 className={`justify-center ${styles.header}`}>Query Flex</h1>
+          <h1 className={`justify-center ${styles.header}`}>QueryFlex</h1>
+          <p className={`${styles.subheader}`}>
+            MultiDB <span className={styles.special}>QueryFlex</span> is an
+            all-in-one SQL command generator designed for developers working
+            with various database systems.
+          </p>
+
+          <button
+            onClick={() => router.push("/auth/sign-up")}
+            className={`btn btn-accent btn-outline sm:btn-sm md:btn-md lg:btn-lg ${styles.getStarted}`}
+          >
+            Get Started
+          </button>
         </section>
       </>
     </>

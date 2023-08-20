@@ -1,0 +1,49 @@
+@keyframes slide-in-left {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-bottom {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(80%);
+    opacity: 0.2;
+  }
+  to {
+    transform: translateY(60%);
+    opacity: 0.2;
+  }
+  to {
+    transform: translateY(40%);
+    opacity: 0.2;
+  }
+  to {
+    transform: translateY(20%);
+    opacity: 0.2;
+  }
+  to {
+    transform: translateY(0%);
+    opacity: 0.2;
+  }
+}

@@ -7,6 +7,7 @@
     width: 30vw;
     height: 35vh;
     perspective: 1000px;
+    animation: fade-in 0.5s ease-out;
   }
   .page {
     width: 100%;
@@ -111,5 +112,32 @@
       font-family: "Bricolage Grotesque";
       animation: shake 0.6s 2;
     }
+  }
+}
+
+@keyframes fade-in {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(80%);
+    opacity: 0.2;
+  }
+  to {
+    transform: translateY(60%);
+    opacity: 0.4;
+  }
+  to {
+    transform: translateY(40%);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateY(20%);
+    opacity: 0.8;
+  }
+  to {
+    transform: translateY(0%);
+    opacity: 1;
   }
 }

@@ -3,6 +3,8 @@ import { SessionProvider } from "next-auth/react";
 import { type AppType } from "next/app";
 import { api } from "@/utils/api";
 import "@/styles/globals.scss";
+import "@/styles/common/animations.scss";
+
 import { ThemeProvider } from "@/components/ThemeProvider";
 import styles from "@/styles/Home.module.scss";
 import ThemeToggle from "@/components/Theme";
