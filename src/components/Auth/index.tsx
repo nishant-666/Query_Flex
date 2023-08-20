@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./Auth.module.scss";
 import InputComponent from "@/components/common/Input";
 import { BsArrowRightShort } from "react-icons/bs";
+import { signUp } from "@/firebase/auth";
 
 export default function AuthComponent() {
   const [cardFront, setCardFront] = useState(true);
@@ -44,7 +45,7 @@ export default function AuthComponent() {
             <div
               className={styles.nextIcon}
               onClick={() => {
-                formData.password ? setCardFront(false) : setIsError(true);
+                formData.password ? signUp() : setIsError(true);
               }}
             >
               <BsArrowRightShort size={20} color="white" />
