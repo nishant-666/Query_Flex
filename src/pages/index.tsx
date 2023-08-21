@@ -12,12 +12,13 @@ export default function Home() {
   const { authState } = useCheckAuth();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  console.log(authState);
   useEffect(() => {
-    if (authState.uid) {
+    if (authState?.uid) {
       setLoading(false);
       router.push("/landing-page");
     } else {
-      setLoading(true);
+      router.push("/");
     }
   }, [authState]);
   if (loading) return <Loader />;
