@@ -7,10 +7,14 @@ export default function Navbar({ authState }: authState) {
   const router = useRouter();
   return (
     <div className={styles.navbar}>
-      <section className={styles.navbarLeft}>
-        <p className={styles.navOption}>Features</p>
-        <p className={styles.navOption}>Pricing</p>
-      </section>
+      {authState ? (
+        <></>
+      ) : (
+        <section className={styles.navbarLeft}>
+          <p className={styles.navOption}>Features</p>
+          <p className={styles.navOption}>Pricing</p>
+        </section>
+      )}
 
       {authState.uid ? (
         <section className={styles.navbarRight}>

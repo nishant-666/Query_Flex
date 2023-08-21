@@ -5,6 +5,7 @@ import Navbar from "@/components/common/Navbar";
 import styles from "@/styles/Home.module.scss";
 import { useRouter } from "next/router";
 import { useCheckAuth } from "@/hooks/useCheckAuth";
+import Loader from "@/components/common/Loader";
 
 export default function Home() {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
@@ -19,7 +20,7 @@ export default function Home() {
       setLoading(true);
     }
   }, [authState]);
-  if (loading) return <h1>Loading</h1>;
+  if (loading) return <Loader />;
   return (
     <>
       <Head>

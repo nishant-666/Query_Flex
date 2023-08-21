@@ -1,33 +1,146 @@
 .landingMain {
-  display: flex;
-  align-items: center;
-  min-height: 100vh;
-  justify-content: center;
-  flex-direction: column;
-  height: auto;
-  gap: 20px;
-  text-align: center;
   font-family: "Bricolage Grotesque";
-  animation: fade-from-right 0.5s ease-out;
-  padding: 10px;
-  // transform-style: preserve-3d;
+  min-height: 100vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  margin-top: 40px;
+  padding-bottom: 100px;
+  .userPrompt {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    text-align: left;
+    .userText {
+      margin-left: 30%;
+      font-size: 18px;
+    }
+
+    .userCredentials {
+      background-color: rgb(198, 6, 6);
+      width: 40px;
+      height: 40px;
+      display: flex;
+      margin: 20px 15px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5px;
+      font-family: "Bricolage Grotesque";
+    }
+  }
+
+  .systemPrompt {
+    width: 100%;
+    height: auto;
+    text-align: left;
+    padding: 10px;
+    display: flex;
+    align-items: flex-start;
+    padding-left: 30px;
+    background-color: rgb(26, 26, 26);
+    .syntaxHighlighter {
+      width: 100%;
+    }
+    .systemLogo {
+      display: flex;
+      margin: 0 15px;
+      align-items: flex-start;
+      border-radius: 5px;
+    }
+  }
+}
+
+.landingMainTransparent {
+  font-family: "Bricolage Grotesque";
+  min-height: 100vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+  padding-bottom: 100px;
+  opacity: 0.4;
+  .userPrompt {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    text-align: left;
+    .userText {
+      margin-left: 30%;
+      font-size: 18px;
+    }
+
+    .userCredentials {
+      background-color: rgb(198, 6, 6);
+      width: 40px;
+      height: 40px;
+      display: flex;
+      margin: 20px 15px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5px;
+      font-family: "Bricolage Grotesque";
+    }
+  }
+
+  .systemPrompt {
+    width: 100%;
+    height: auto;
+    text-align: left;
+    padding: 10px;
+    display: flex;
+    align-items: flex-start;
+    padding-left: 30px;
+    background-color: rgb(26, 26, 26);
+    .syntaxHighlighter {
+      width: 100%;
+    }
+    .systemLogo {
+      display: flex;
+      margin: 0 15px;
+      align-items: flex-start;
+      border-radius: 5px;
+    }
+  }
 }
 
 .fixed {
   position: fixed;
   bottom: 0px;
   width: 100%;
+  font-family: "Bricolage Grotesque";
   .promtInputContainer {
     display: flex;
     justify-content: center;
-    padding: 20px;
+
     .promtInput {
       display: flex;
-      padding: 10px;
+      padding: 23px;
       width: 100%;
-      height: 100px;
+      height: 70px;
       color: white;
       outline: 1px solid #212121;
+    }
+  }
+
+  .sendButton {
+    position: absolute;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+
+    .send {
+      background-color: #66c95b;
+      padding: 8px;
+      cursor: pointer;
       border-radius: 5px;
     }
   }
