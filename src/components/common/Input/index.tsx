@@ -4,6 +4,7 @@ export default function InputComponent({
   name,
   type = "text",
   placeholder,
+  className,
   onChange,
 }: commonInput) {
   return (
@@ -14,7 +15,7 @@ export default function InputComponent({
         type={type}
         name={name}
         onChange={onChange}
-        className={styles.input}
+        className={`${className} ${styles.input}`}
         placeholder={placeholder}
       />
     </div>

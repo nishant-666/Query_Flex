@@ -1,13 +1,25 @@
 import Head from "next/head";
+import React, { useEffect, useState } from "react";
 import { api } from "@/utils/api";
 import Navbar from "@/components/common/Navbar";
 import styles from "@/styles/Home.module.scss";
 import { useRouter } from "next/router";
+import { useCheckAuth } from "@/hooks/useCheckAuth";
 
 export default function Home() {
-  const router = useRouter();
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
-
+  const { authState } = useCheckAuth();
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    if (authState.uid) {
+      setLoading(false);
+      router.push("/landing-page");
+    } else {
+      setLoading(true);
+    }
+  }, [authState]);
+  if (loading) return <h1>Loading</h1>;
   return (
     <>
       <Head>
@@ -16,7 +28,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <>
-        <Navbar />
+        <Navbar authState={authState} />
         <section
           className={`prose flex md:container lg:prose-xl md:mx-auto ${styles.homeMain}`}
         >

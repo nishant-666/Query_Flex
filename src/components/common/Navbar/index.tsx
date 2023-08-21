@@ -1,18 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "./Navbar.module.scss";
 import { useRouter } from "next/router";
-import { useCheckAuth } from "@/hooks/useCheckAuth";
 import { signout } from "@/firebase/auth";
 
-export default function Navbar() {
-  const { authState } = useCheckAuth();
+export default function Navbar({ authState }: authState) {
   const router = useRouter();
-  useEffect(() => {
-    if (authState.uid) {
-      router.push("/landing-page");
-    }
-  }, [authState]);
-
   return (
     <div className={styles.navbar}>
       <section className={styles.navbarLeft}>

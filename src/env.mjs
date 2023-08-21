@@ -25,6 +25,7 @@ export const env = createEnv({
     NEXT_PUBLIC_storageBucket: z.string(),
     NEXT_PUBLIC_messagingSenderId: z.string(),
     NEXT_PUBLIC_appId: z.string(),
+    NEXT_PUBLIC_OPENAI_API_KEY: z.string(),
   },
 
   /**
@@ -40,6 +41,7 @@ export const env = createEnv({
     NEXT_PUBLIC_storageBucket: z.string(),
     NEXT_PUBLIC_messagingSenderId: z.string(),
     NEXT_PUBLIC_appId: z.string(),
+    NEXT_PUBLIC_OPENAI_API_KEY: z.string(),
   },
 
   /**
@@ -57,6 +59,7 @@ export const env = createEnv({
     NEXT_PUBLIC_storageBucket: process.env.NEXT_PUBLIC_storageBucket,
     NEXT_PUBLIC_messagingSenderId: process.env.NEXT_PUBLIC_messagingSenderId,
     NEXT_PUBLIC_appId: process.env.NEXT_PUBLIC_appId,
+    NEXT_PUBLIC_OPENAI_API_KEY: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
     // DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID,
     // DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET,
   },
