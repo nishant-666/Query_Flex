@@ -19,7 +19,6 @@ export default function Landing() {
   }, [authState]);
   return (
     <div className={styles.landingComponent}>
-      <Navbar authState={authState} />
       <LandingComponent />
     </div>
   );
