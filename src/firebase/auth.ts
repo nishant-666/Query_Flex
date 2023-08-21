@@ -1,6 +1,7 @@
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
 import { auth } from "./firebaseConfig";
 
@@ -22,4 +23,8 @@ export const signIn = (payload: { email: string; password: string }) => {
   );
 
   return response;
+};
+
+export const signout = () => {
+  signOut(auth);
 };

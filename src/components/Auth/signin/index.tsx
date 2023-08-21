@@ -20,7 +20,7 @@ export default function SignInComponent() {
   const router = useRouter();
   const [cardFront] = useState(true);
   const [cardMiddle, setCardMiddle] = useState(true);
-
+  console.log(signUpComplete);
   if (signUpComplete) return <MidSignUp />;
   return (
     <div className={styles.authMain}>
@@ -64,9 +64,7 @@ export default function SignInComponent() {
         )}
         {cardMiddle ? (
           <div className={`${styles.page}`}>
-            <h1 className={styles.header}>
-              Your Email {formData.email ? `is ${formData.email}` : ""}
-            </h1>
+            <h1 className={styles.header}>Your Email</h1>
 
             <InputComponent
               name="email"

@@ -32,7 +32,7 @@ const useSignUp = () => {
 
       setTimeout(() => {
         setSignUpComplete(false);
-        router.push("/landing");
+        router.push("/landing-page");
       }, 2000);
     } catch (err: any) {
       const errorCode = err.code;

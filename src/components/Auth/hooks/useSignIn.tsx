@@ -25,15 +25,15 @@ const useSignIn = () => {
 
   const handleSubmit = async () => {
     try {
-      await signIn(formData);
       setSignUpComplete(true);
+      await signIn(formData);
 
       setError("");
 
       setTimeout(() => {
         setSignUpComplete(false);
-        router.push("/landing");
-      }, 2000);
+        router.push("/landing-page");
+      }, 0);
     } catch (err: any) {
       const errorCode = err.code;
 
