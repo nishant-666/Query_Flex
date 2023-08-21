@@ -11,7 +11,7 @@ export default function Navbar() {
     if (authState.uid) {
       router.push("/landing-page");
     }
-  }, []);
+  }, [authState]);
 
   return (
     <div className={styles.navbar}>
