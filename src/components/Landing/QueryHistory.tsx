@@ -35,7 +35,7 @@ export default function QueryHistory({
               console.log(query.id);
             }}
           >
-            {query?.responsePrompt?.[0]?.content}
+            {query?.responsePrompt?.[0]?.content.slice(0, 35)}
           </div>
         ))}
       </div>
