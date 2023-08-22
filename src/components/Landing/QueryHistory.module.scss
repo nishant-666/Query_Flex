@@ -1,4 +1,21 @@
 .queryHistory {
   position: sticky;
   top: 20px;
+
+  .queries {
+    height: 60px;
+    display: flex;
+    padding-left: 20px;
+    align-items: center;
+    margin-top: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .queries:hover {
+    background-color: #393939;
+  }
+
+  .queriesHighligted {
+  }
 }

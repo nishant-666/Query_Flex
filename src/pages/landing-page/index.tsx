@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import LandingComponent from "@/components/Landing";
+
 import Navbar from "@/components/common/Navbar";
-import QueryHistory from "@/components/Landing/QueryHistory";
+
 import styles from "@/styles/Landing.module.scss";
 import { useRouter } from "next/router";
 import { useCheckAuth } from "@/hooks/useCheckAuth";
+import LandingMain from "@/components/Landing";
 
 export default function Landing() {
   const { authState } = useCheckAuth();
@@ -18,14 +19,5 @@ export default function Landing() {
       setLoading(true);
     }
   }, [authState]);
-  return (
-    <div className={styles.landingPage}>
-      <div className={styles.queryHistory}>
-        <QueryHistory />
-      </div>
-      <div className={styles.landingComponent}>
-        <LandingComponent />
-      </div>
-    </div>
-  );
+  return <LandingMain />;
 }
