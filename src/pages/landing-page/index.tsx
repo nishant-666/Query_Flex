@@ -19,13 +19,13 @@ export default function Landing() {
     }
   }, [authState]);
   return (
-    <>
+    <div className={styles.landingPage}>
       <div className={styles.queryHistory}>
         <QueryHistory />
       </div>
       <div className={styles.landingComponent}>
         <LandingComponent />
       </div>
-    </>
+    </div>
   );
 }

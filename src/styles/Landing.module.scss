@@ -1,14 +1,19 @@
+.landingPage {
+  width: 100%;
+  display: flex;
+}
+
 .queryHistory {
   font-family: "Bricolage Grotesque";
   width: 25%;
   min-height: 100vh;
   height: auto;
   background-color: rgb(26, 26, 26);
-  position: fixed;
-  top: 0;
+
   padding: 20px;
 }
 
 .landingComponent {
-  width: 100%;
+  width: 75%;
+  // margin-left: 300px;
 }
