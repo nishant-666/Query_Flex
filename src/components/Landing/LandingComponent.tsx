@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styles from "./Landing.module.scss";
 import { Configuration, OpenAIApi } from "openai";
 import { AiOutlineSend, AiOutlineSave } from "react-icons/ai";
@@ -18,7 +18,9 @@ export default function LandingComponent({
   isEdit,
   currentId,
 }: LandingComponent) {
+  const contentRef = useRef<HTMLDivElement>(null);
   const [prompt, setPrompt] = useState("");
+  const [content, setContent] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [responsePrompt, setResponsePrompt] = useState([
     {
@@ -43,6 +45,8 @@ export default function LandingComponent({
     setResponsePrompt((prev) => [...prev, { role: "user", content: prompt }]);
     setPrompt("");
     setIsLoading(true);
+    let newContent = [...content, `New content ${res.length + 1}`];
+    setContent(newContent);
     const response = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
       messages: res as [],
@@ -61,6 +65,8 @@ export default function LandingComponent({
         content: response.data.choices[0]?.message?.content as string,
       },
     ]);
+    newContent = [`New content ${content.length + 1}`];
+    setContent(newContent);
   };
 
   const saveQuery = async (id: string) => {
@@ -75,22 +81,33 @@ export default function LandingComponent({
       }
     }
   };
-  console.log(responsePrompt);
+
   useEffect(() => {
     setResponsePrompt(currentDoc);
+  }, [currentDoc]);
+
+  useEffect(() => {
     window.scrollTo({
       top: 0,
       left: 0,
       behavior: "smooth",
     });
-  }, [currentDoc]);
+  }, [currentId]);
 
+  useEffect(() => {
+    if (contentRef.current) {
+      window.scrollTo({
+        top: contentRef.current.scrollHeight,
+        behavior: "smooth",
+      });
+    }
+  }, [content.length]);
   return (
-    <div className={styles.landing}>
+    <div className={styles.landing} ref={contentRef}>
       {isLoading ? (
         <>
           <Loader />
-          <section className={`${styles.landingMainTransparent}`}>
+          <div ref={contentRef} className={`${styles.landingMainTransparent}`}>
             {responsePrompt
               .filter((item) => item.content !== "")
               .map((res) =>
@@ -100,10 +117,11 @@ export default function LandingComponent({
                   <SystemRes text={res.content} />
                 )
               )}
-          </section>
+          </div>
         </>
       ) : (
-        <section
+        <div
+          ref={contentRef}
           className={`${
             !isLoading ? styles.landingMain : styles.landingMainTransparent
           }`}
@@ -117,7 +135,7 @@ export default function LandingComponent({
                 <SystemRes text={res.content} />
               )
             )}
-        </section>
+        </div>
       )}
       <section className={styles.fixed}>
         <div className={styles.promtInputContainer}>
