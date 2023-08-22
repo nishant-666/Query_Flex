@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Landing.module.scss";
 import { Configuration, OpenAIApi } from "openai";
-import { AiOutlineSend } from "react-icons/ai";
+import { AiOutlineSend, AiOutlineSave } from "react-icons/ai";
 import UserRes from "./UserRes";
 import SystemRes from "./SystemRes";
 import Loader from "../common/Loader";
+import { addQuery } from "@/firebase/firestore";
 
 const configuration = new Configuration({
   apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
@@ -29,7 +30,7 @@ export default function LandingComponent() {
     event: React.ChangeEvent<HTMLTextAreaElement>
   ) => {
     setPrompt(event.target.value);
-    event.target.style.height = "70px"; // Reset height
+    event.target.style.height = "70px";
     event.target.style.height = `${event.target.scrollHeight}px`; // Set new height
   };
 
@@ -58,8 +59,16 @@ export default function LandingComponent() {
     ]);
   };
 
+  const saveQuery = async () => {
+    let query = {
+      responsePrompt: responsePrompt,
+    };
+    if (responsePrompt.length > 1) {
+      await addQuery(query);
+    }
+  };
   return (
-    <>
+    <div className={styles.landing}>
       {isLoading ? (
         <>
           <Loader />
@@ -109,12 +118,17 @@ export default function LandingComponent() {
                 size={40}
                 onClick={response}
               />
+              <AiOutlineSave
+                className={styles.save}
+                size={40}
+                onClick={saveQuery}
+              />
             </div>
           ) : (
             <></>
           )}
         </div>
       </section>
-    </>
+    </div>
   );
 }

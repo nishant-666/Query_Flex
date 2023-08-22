@@ -30,7 +30,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <>
-        <Navbar authState={authState} />
+        <Navbar />
         <section
           className={`prose flex md:container lg:prose-xl md:mx-auto ${styles.homeMain}`}
         >
