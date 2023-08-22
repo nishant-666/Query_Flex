@@ -5,7 +5,7 @@ import { AiOutlineSend, AiOutlineSave } from "react-icons/ai";
 import UserRes from "./UserRes";
 import SystemRes from "./SystemRes";
 import Loader from "../common/Loader";
-import { addQuery } from "@/firebase/firestore";
+import { addQuery, updateQuery } from "@/firebase/firestore";
 
 const configuration = new Configuration({
   apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
@@ -13,7 +13,11 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-export default function LandingComponent({ currentDoc }: LandingComponent) {
+export default function LandingComponent({
+  currentDoc,
+  isEdit,
+  currentId,
+}: LandingComponent) {
   const [prompt, setPrompt] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [responsePrompt, setResponsePrompt] = useState([
@@ -59,17 +63,26 @@ export default function LandingComponent({ currentDoc }: LandingComponent) {
     ]);
   };
 
-  const saveQuery = async () => {
+  const saveQuery = async (id: string) => {
     let query = {
       responsePrompt: responsePrompt.filter((res) => res.content !== ""),
     };
     if (responsePrompt.length > 1) {
-      await addQuery(query);
+      if (isEdit) {
+        updateQuery(id, query);
+      } else {
+        await addQuery(query);
+      }
     }
   };
-
+  console.log(responsePrompt);
   useEffect(() => {
     setResponsePrompt(currentDoc);
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
   }, [currentDoc]);
 
   return (
@@ -126,7 +139,7 @@ export default function LandingComponent({ currentDoc }: LandingComponent) {
               <AiOutlineSave
                 className={styles.save}
                 size={40}
-                onClick={saveQuery}
+                onClick={() => saveQuery(currentId)}
               />
             </div>
           ) : (

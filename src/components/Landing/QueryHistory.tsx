@@ -5,21 +5,33 @@ import { getQueries } from "@/hooks/useGetQueries";
 export default function QueryHistory({
   setCurrentDoc,
   getCurrentDoc,
+  setIsEdit,
+  setCurrentId,
 }: QueryHistory) {
   let { queries } = getQueries();
 
   return (
     <div className={styles.queryHistory}>
       <button
-        onClick={() => setCurrentDoc([])}
+        onClick={() => {
+          setCurrentDoc([]);
+          setIsEdit(false);
+          setCurrentId("");
+        }}
         className="btn btn-success glass btn-outline btn-block"
       >
         New Query
       </button>
 
-      <div className={styles.queries}>
+      <div className="mt-5">
         {queries?.map((query: any) => (
-          <div onClick={() => getCurrentDoc(query.id)}>
+          <div
+            className={styles.queries}
+            onClick={() => {
+              getCurrentDoc(query.id);
+              setIsEdit(true);
+            }}
+          >
             {query?.responsePrompt?.[0]?.content}
           </div>
         ))}

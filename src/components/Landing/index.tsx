@@ -6,9 +6,11 @@ import { showCurrentQuery } from "@/firebase/firestore";
 
 export default function LandingMain() {
   const [currentDoc, setCurrentDoc] = useState([]);
+  const [isEdit, setIsEdit] = useState(false);
+  const [currentId, setCurrentId] = useState("");
   const getCurrentDoc = async (id: string) => {
-    let response = await showCurrentQuery(id);
-    setCurrentDoc(response);
+    await showCurrentQuery(id, setCurrentDoc);
+    setCurrentId(id);
   };
   return (
     <div className={styles.landingPage}>
@@ -16,10 +18,16 @@ export default function LandingMain() {
         <QueryHistory
           setCurrentDoc={setCurrentDoc}
           getCurrentDoc={getCurrentDoc}
+          setIsEdit={setIsEdit}
+          setCurrentId={setCurrentId}
         />
       </div>
       <div className={styles.landingComponent}>
-        <LandingComponent currentDoc={currentDoc} />
+        <LandingComponent
+          currentDoc={currentDoc}
+          currentId={currentId}
+          isEdit={isEdit}
+        />
       </div>
     </div>
   );
