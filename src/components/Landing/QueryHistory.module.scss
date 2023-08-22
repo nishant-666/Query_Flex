@@ -12,6 +12,17 @@
     cursor: pointer;
   }
 
+  .selected {
+    height: 60px;
+    display: flex;
+    padding-left: 20px;
+    align-items: center;
+    margin-top: 0px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #272727;
+  }
+
   .queries:hover {
     background-color: #393939;
   }

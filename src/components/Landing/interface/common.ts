@@ -7,6 +7,7 @@ interface QueryHistory {
   getCurrentDoc: Function;
   setIsEdit: Function;
   setCurrentId: Function;
+  currentId: string;
 }
 
 interface LandingComponent {

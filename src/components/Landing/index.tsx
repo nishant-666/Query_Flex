@@ -20,6 +20,7 @@ export default function LandingMain() {
           getCurrentDoc={getCurrentDoc}
           setIsEdit={setIsEdit}
           setCurrentId={setCurrentId}
+          currentId={currentId}
         />
       </div>
       <div className={styles.landingComponent}>

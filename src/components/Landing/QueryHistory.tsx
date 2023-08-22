@@ -7,9 +7,9 @@ export default function QueryHistory({
   getCurrentDoc,
   setIsEdit,
   setCurrentId,
+  currentId,
 }: QueryHistory) {
   let { queries } = getQueries();
-
   return (
     <div className={styles.queryHistory}>
       <button
@@ -26,10 +26,13 @@ export default function QueryHistory({
       <div className="mt-5">
         {queries?.map((query: any) => (
           <div
-            className={styles.queries}
+            className={
+              currentId === query.id ? styles.selected : styles.queries
+            }
             onClick={() => {
               getCurrentDoc(query.id);
               setIsEdit(true);
+              console.log(query.id);
             }}
           >
             {query?.responsePrompt?.[0]?.content}
