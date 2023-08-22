@@ -2,8 +2,8 @@ import React from "react";
 import styles from "./Landing.module.scss";
 import Logo from "@/assets/logo.png";
 import Image from "next/image";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { dark } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { dark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
 export default function SystemRes({ text }: ResponseText) {
   return (
