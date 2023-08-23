@@ -7,13 +7,19 @@ import {
   updateDoc,
   onSnapshot,
   getDocs,
+  setDoc,
 } from "firebase/firestore";
 
 const queryCollection = collection(firestore, "query");
 
-export const addQuery = (payload: {}) => {
+export const addQuery = (id: string, payload: {}) => {
   try {
-    addDoc(queryCollection, { ...payload, userEmail: auth.currentUser?.email });
+    const currentDoc = doc(queryCollection, id);
+    setDoc(currentDoc, {
+      ...payload,
+      id: id,
+      userEmail: auth.currentUser?.email,
+    });
   } catch (err) {
     console.log(err);
   }
@@ -24,18 +30,8 @@ export const updateQuery = (id: string, payload: {}) => {
     const currentDoc = doc(queryCollection, id);
     updateDoc(currentDoc, {
       ...payload,
+      id: id,
     });
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-export const showFirstQuery = async () => {
-  try {
-    const response = await getDocs(queryCollection);
-    return response.docs.map((doc) => {
-      return { ...doc.data(), id: doc.id };
-    })[0];
   } catch (err) {
     console.log(err);
   }

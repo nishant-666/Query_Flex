@@ -16,7 +16,7 @@ export default function QueryHistory({
         onClick={() => {
           setCurrentDoc([]);
           setIsEdit(false);
-          setCurrentId("");
+          setCurrentId(Date.now());
         }}
         className="btn btn-success glass btn-outline btn-block"
       >
@@ -33,10 +33,11 @@ export default function QueryHistory({
             onClick={() => {
               getCurrentDoc(query.id);
               setIsEdit(true);
-              console.log(query.id);
             }}
           >
-            {query?.responsePrompt?.[0]?.content.slice(0, 35)}
+            {query?.responsePrompt?.[0]?.content.length > 30
+              ? `${query?.responsePrompt?.[0]?.content.slice(0, 30)}..`
+              : query?.responsePrompt?.[0]?.content}
           </div>
         ))}
       </div>

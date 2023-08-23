@@ -1,17 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 import styles from "./Landing.module.scss";
-import { Configuration, OpenAIApi } from "openai";
-import { AiOutlineSend, AiOutlineSave } from "react-icons/ai";
+
+import { AiOutlineSend } from "react-icons/ai";
 import UserRes from "./UserRes";
 import SystemRes from "./SystemRes";
 import Loader from "../common/Loader";
 import { addQuery, updateQuery } from "@/firebase/firestore";
-
-const configuration = new Configuration({
-  apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
-});
-
-const openai = new OpenAIApi(configuration);
+import { useOpenAI } from "./hooks/useOpenAI";
 
 export default function LandingComponent({
   currentDoc,
@@ -19,19 +14,9 @@ export default function LandingComponent({
   currentId,
 }: LandingComponent) {
   const contentRef = useRef<HTMLDivElement>(null);
-  const [prompt, setPrompt] = useState("");
-  const [content, setContent] = useState<string[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [responsePrompt, setResponsePrompt] = useState([
-    {
-      role: "user",
-      content: "",
-    },
-    {
-      role: "system",
-      content: "",
-    },
-  ]);
+  const { response, isLoading, prompt, setPrompt, responsePrompt, content } =
+    useOpenAI(currentDoc);
+
   const handleTextareaChange = (
     event: React.ChangeEvent<HTMLTextAreaElement>
   ) => {
@@ -40,52 +25,18 @@ export default function LandingComponent({
     event.target.style.height = `${event.target.scrollHeight}px`; // Set new height
   };
 
-  const response = async () => {
-    let res = [...responsePrompt, { role: "user", content: prompt }];
-    setResponsePrompt((prev) => [...prev, { role: "user", content: prompt }]);
-    setPrompt("");
-    setIsLoading(true);
-    let newContent = [...content, `New content ${res.length + 1}`];
-    setContent(newContent);
-
-    const response = await openai.createChatCompletion({
-      model: "gpt-3.5-turbo",
-      messages: res as [],
-      temperature: 0.3,
-      max_tokens: 1000,
-      top_p: 1,
-      frequency_penalty: 0,
-      presence_penalty: 0,
-    });
-
-    await setIsLoading(false);
-    setResponsePrompt((prev) => [
-      ...prev,
-      {
-        role: "system",
-        content: response.data.choices[0]?.message?.content as string,
-      },
-    ]);
-    newContent = [`New content ${content.length + 1}`];
-    setContent(newContent);
-  };
-
-  const saveQuery = async (id: string) => {
+  const saveQuery = async (currentId: string) => {
     let query = {
       responsePrompt: responsePrompt.filter((res) => res.content !== ""),
     };
     if (responsePrompt.length > 1) {
       if (isEdit) {
-        updateQuery(id, query);
+        updateQuery(currentId, query);
       } else {
-        await addQuery(query);
+        await addQuery(currentId, query);
       }
     }
   };
-
-  useEffect(() => {
-    setResponsePrompt(currentDoc);
-  }, [currentDoc]);
 
   useEffect(() => {
     window.scrollTo({
@@ -96,19 +47,18 @@ export default function LandingComponent({
   }, [currentId]);
 
   useEffect(() => {
+    saveQuery(currentId);
+  }, [content]);
+
+  useEffect(() => {
     if (contentRef.current) {
       window.scrollTo({
         top: contentRef.current.scrollHeight,
         behavior: "smooth",
       });
-
-      // saveQuery(currentId);
     }
   }, [content.length]);
 
-  // useEffect(() => {
-  //   console.log(currentId);
-  // }, [responsePrompt]);
   return (
     <div className={styles.landing} ref={contentRef}>
       {isLoading ? (
@@ -168,11 +118,6 @@ export default function LandingComponent({
                 className={styles.send}
                 size={40}
                 onClick={response}
-              />
-              <AiOutlineSave
-                className={styles.save}
-                size={40}
-                onClick={() => saveQuery(currentId)}
               />
             </div>
           ) : (

@@ -1,4 +1,10 @@
-import { onSnapshot, collection, where, query } from "firebase/firestore";
+import {
+  onSnapshot,
+  collection,
+  where,
+  query,
+  orderBy,
+} from "firebase/firestore";
 import { firestore, auth } from "@/firebase/firebaseConfig";
 import { useEffect, useState } from "react";
 
@@ -10,7 +16,8 @@ export const getQueries = () => {
     if (auth.currentUser?.email) {
       let emailQuery = query(
         queryCollection,
-        where("userEmail", "==", auth.currentUser?.email)
+        where("userEmail", "==", auth.currentUser?.email),
+        orderBy("id", "desc")
       );
       await onSnapshot(emailQuery, (response) => {
         setQueries(
