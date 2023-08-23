@@ -6,6 +6,7 @@ import {
   doc,
   updateDoc,
   onSnapshot,
+  getDocs,
 } from "firebase/firestore";
 
 const queryCollection = collection(firestore, "query");
@@ -24,6 +25,17 @@ export const updateQuery = (id: string, payload: {}) => {
     updateDoc(currentDoc, {
       ...payload,
     });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const showFirstQuery = async () => {
+  try {
+    const response = await getDocs(queryCollection);
+    return response.docs.map((doc) => {
+      return { ...doc.data(), id: doc.id };
+    })[0];
   } catch (err) {
     console.log(err);
   }

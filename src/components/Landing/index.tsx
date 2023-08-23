@@ -28,6 +28,7 @@ export default function LandingMain() {
           currentDoc={currentDoc}
           currentId={currentId}
           isEdit={isEdit}
+          setCurrentId={setCurrentId}
         />
       </div>
     </div>

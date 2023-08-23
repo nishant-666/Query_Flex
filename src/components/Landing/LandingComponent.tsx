@@ -47,6 +47,7 @@ export default function LandingComponent({
     setIsLoading(true);
     let newContent = [...content, `New content ${res.length + 1}`];
     setContent(newContent);
+
     const response = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
       messages: res as [],
@@ -100,8 +101,14 @@ export default function LandingComponent({
         top: contentRef.current.scrollHeight,
         behavior: "smooth",
       });
+
+      // saveQuery(currentId);
     }
   }, [content.length]);
+
+  // useEffect(() => {
+  //   console.log(currentId);
+  // }, [responsePrompt]);
   return (
     <div className={styles.landing} ref={contentRef}>
       {isLoading ? (
@@ -110,11 +117,15 @@ export default function LandingComponent({
           <div ref={contentRef} className={`${styles.landingMainTransparent}`}>
             {responsePrompt
               .filter((item) => item.content !== "")
-              .map((res) =>
+              .map((res, index) =>
                 res.role === "user" ? (
-                  <UserRes text={res.content} />
+                  <div key={index}>
+                    <UserRes text={res.content} />
+                  </div>
                 ) : (
-                  <SystemRes text={res.content} />
+                  <div key={index}>
+                    <SystemRes text={res.content} />
+                  </div>
                 )
               )}
           </div>
@@ -128,11 +139,15 @@ export default function LandingComponent({
         >
           {responsePrompt
             .filter((item) => item.content !== "")
-            .map((res) =>
+            .map((res, index) =>
               res.role === "user" ? (
-                <UserRes text={res.content} />
+                <div key={index}>
+                  <UserRes text={res.content} />
+                </div>
               ) : (
-                <SystemRes text={res.content} />
+                <div key={index}>
+                  <SystemRes text={res.content} />
+                </div>
               )
             )}
         </div>

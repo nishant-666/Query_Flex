@@ -24,8 +24,9 @@ export default function QueryHistory({
       </button>
 
       <div className="mt-5">
-        {queries?.map((query: any) => (
+        {queries?.map((query: any, index: number) => (
           <div
+            key={index}
             className={
               currentId === query.id ? styles.selected : styles.queries
             }

@@ -14,4 +14,5 @@ interface LandingComponent {
   currentDoc: never[];
   isEdit: boolean;
   currentId: string;
+  setCurrentId: Function;
 }
