@@ -25,20 +25,57 @@ export default function Home() {
         <section
           className={`prose flex md:container lg:prose-xl md:mx-auto ${styles.homeMain}`}
         >
+          <div className="lines">
+            <div className="line"></div>
+            <div className="line"></div>
+            <div className="line"></div>
+          </div>
           <h1 className={`justify-center ${styles.header}`}>QueryFlex</h1>
           <p className={`${styles.subheader}`}>
             MultiDB <span className={styles.special}>QueryFlex</span> is an
-            all-in-one SQL command generator designed for developers working
-            with various database systems.
+            all-in-one Database Query Generator designed for developers working
+            with various database systems!
           </p>
-
-          <button
-            onClick={() => router.push("/auth/sign-up")}
-            className={`btn btn-success glass btn-outline sm:btn-sm md:btn-md lg:btn-lg ${styles.getStarted}`}
-          >
-            Get Started
-          </button>
+          <div>
+            <button
+              onClick={() => router.push("/auth/sign-up")}
+              className={`btn btn-success glass btn-outline m-3 sm:btn-sm md:btn-md lg:btn-lg ${styles.getStarted}`}
+            >
+              Get Started
+            </button>
+            <button
+              className={`btn btn-info glass btn-outline m-3 sm:btn-sm md:btn-md lg:btn-lg ${styles.getStarted}`}
+            >
+              Request Demo
+            </button>
+          </div>
         </section>
+
+        {/* <section className={`flex lg:prose-xl ${styles.features}`}>
+          <div className={styles.featuresPoints}>
+            <div className={styles.featurePoint}>
+              <p className={`${styles.subheader}`}>
+                1. Cross-Database Syntax Translation: Automatically translate
+                query commands across different database systems, ensuring
+                accurate syntax conversion.
+              </p>
+            </div>
+            <div className={styles.featurePoint}>
+              <p className={`${styles.subheader}`}>
+                2. Unified Query Builder: Provide a unified, intuitive query
+                builder that adapts to the specific syntax requirements of
+                different databases.
+              </p>
+            </div>
+            <div className={styles.featurePoint}>
+              <p className={`${styles.subheader}`}>
+                3. Database Switching: Allow users to easily switch between
+                different databases within the tool, making it convenient to
+                work on different projects.
+              </p>
+            </div>
+          </div>
+        </section> */}
       </>
     </>
   );
