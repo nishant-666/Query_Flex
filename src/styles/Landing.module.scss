@@ -17,3 +17,16 @@
   width: 75%;
   // margin-left: 300px;
 }
+
+@media (max-width: 480px) {
+  .landingPage {
+    width: 100%;
+  }
+  .queryHistory {
+    display: none;
+  }
+
+  .landingComponent {
+    width: 100%;
+  }
+}

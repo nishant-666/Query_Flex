@@ -18,12 +18,12 @@ export default function Navbar() {
         >
           Sign In
         </button>
-        <button
+        {/* <button
           onClick={() => router.push("/auth/sign-up")}
           className={`btn btn-success glass btn-outline ${styles.signInBtn}`}
         >
           Get Started
-        </button>
+        </button> */}
       </section>
     </div>
   );
