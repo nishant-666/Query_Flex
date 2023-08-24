@@ -105,7 +105,7 @@ export default function LandingComponent({
       )}
 
       <section className={styles.fixed}>
-        {responsePrompt.length === 0 ? (
+        {responsePrompt?.length === 0 ? (
           <LandingSuggestions setPrompt={setPrompt} />
         ) : (
           <></>
