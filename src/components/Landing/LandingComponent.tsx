@@ -48,7 +48,9 @@ export default function LandingComponent({
   }, [currentId]);
 
   useEffect(() => {
-    saveQuery(currentId);
+    if (responsePrompt?.filter((res) => res.content !== "").length > 0) {
+      saveQuery(currentId);
+    }
   }, [content]);
 
   useEffect(() => {

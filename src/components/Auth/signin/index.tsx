@@ -20,7 +20,7 @@ export default function SignInComponent() {
   const router = useRouter();
   const [cardFront] = useState(true);
   const [cardMiddle, setCardMiddle] = useState(true);
-  console.log(signUpComplete);
+
   if (signUpComplete) return <MidSignUp />;
   return (
     <div className={styles.authMain}>

@@ -1,27 +1,18 @@
 import Head from "next/head";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { api } from "@/utils/api";
 import Navbar from "@/components/common/Navbar";
 import styles from "@/styles/Home.module.scss";
 import { useRouter } from "next/router";
 import { useCheckAuth } from "@/hooks/useCheckAuth";
-import Loader from "@/components/common/Loader";
 
 export default function Home() {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
-  const { authState } = useCheckAuth();
+  const { loading } = useCheckAuth();
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
-  console.log(authState);
-  useEffect(() => {
-    if (authState?.uid) {
-      setLoading(false);
-      router.push("/landing-page");
-    } else {
-      router.push("/");
-    }
-  }, [authState]);
-  if (loading) return <Loader />;
+
+  if (loading) return <div style={{ display: "none" }}></div>;
+
   return (
     <>
       <Head>

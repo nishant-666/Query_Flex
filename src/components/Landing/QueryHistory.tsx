@@ -3,6 +3,8 @@ import styles from "./QueryHistory.module.scss";
 import { getQueries } from "@/hooks/useGetQueries";
 import { AiOutlineDelete } from "react-icons/ai";
 import { deleteQuery } from "@/firebase/firestore";
+import { signout } from "@/firebase/auth";
+import { useRouter } from "next/router";
 
 export default function QueryHistory({
   setCurrentDoc,
@@ -12,7 +14,7 @@ export default function QueryHistory({
   currentId,
 }: QueryHistory) {
   let { queries } = getQueries();
-
+  const router = useRouter();
   return (
     <div className={styles.queryHistory}>
       <button
@@ -54,6 +56,18 @@ export default function QueryHistory({
             )}
           </div>
         ))}
+      </div>
+
+      <div className={styles.logoutBtn}>
+        <button
+          className="btn glass btn-outline btn-block"
+          onClick={() => {
+            signout();
+            router.push("/");
+          }}
+        >
+          Logout
+        </button>
       </div>
     </div>
   );

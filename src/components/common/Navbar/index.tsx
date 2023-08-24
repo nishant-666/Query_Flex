@@ -12,18 +12,6 @@ export default function Navbar() {
         <p className={styles.navOption}>Pricing</p>
       </section>
 
-      {/* <section className={styles.navbarRight}>
-          <button
-            onClick={() => {
-              signout();
-              router.push("/");
-            }}
-            className={`btn btn-success ${styles.signInBtn}`}
-          >
-            Sign Out
-          </button>
-        </section> */}
-
       <section className={styles.navbarRight}>
         <button
           onClick={() => router.push("/auth/sign-in")}
