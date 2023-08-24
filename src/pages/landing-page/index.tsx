@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useCheckAuth } from "@/hooks/useCheckAuth";
-import { useRouter } from "next/router";
 import LandingMain from "@/components/Landing";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "@/firebase/firebaseConfig";
 
 export default function Landing() {
   const { loading } = useCheckAuth();

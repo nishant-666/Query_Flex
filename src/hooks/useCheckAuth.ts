@@ -11,12 +11,13 @@ interface User {
 
 export const useCheckAuth = () => {
   const router = useRouter();
-
+  const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (response: any) => {
       if (response?.uid) {
+        setEmail(response.email);
         router.push("/landing-page");
         setLoading(false);
       } else {
@@ -34,5 +35,5 @@ export const useCheckAuth = () => {
     return () => unsubscribe();
   }, []);
 
-  return { loading };
+  return { loading, email };
 };

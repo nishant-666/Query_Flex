@@ -3,8 +3,8 @@ import styles from "./Landing.module.scss";
 import { useCheckAuth } from "@/hooks/useCheckAuth";
 
 export default function UserRes({ text }: ResponseText) {
-  const { authState } = useCheckAuth();
-  const credentials = authState.email.slice(0, 2).toUpperCase();
+  const { email } = useCheckAuth();
+  const credentials = email.slice(0, 2).toUpperCase();
 
   return (
     <section className={styles.userPrompt}>
