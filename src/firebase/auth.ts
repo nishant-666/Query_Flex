@@ -3,6 +3,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   sendPasswordResetEmail,
+  sendEmailVerification,
 } from "firebase/auth";
 import { auth } from "./firebaseConfig";
 
@@ -28,6 +29,15 @@ export const signIn = (payload: { email: string; password: string }) => {
 
 export const signout = () => {
   signOut(auth);
+};
+
+export const verifyUser = async (currentUser: any) => {
+  try {
+    await sendEmailVerification(currentUser);
+    return "Verify your Account!";
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const resetPassword = async (email: string) => {

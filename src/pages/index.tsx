@@ -5,15 +5,16 @@ import Navbar from "@/components/common/Navbar";
 import styles from "@/styles/Home.module.scss";
 import { useRouter } from "next/router";
 import { useCheckAuth } from "@/hooks/useCheckAuth";
+import Loader from "@/components/common/Loader";
 
 export default function Home() {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
   const { loading } = useCheckAuth();
   const router = useRouter();
 
-  if (loading) return <div style={{ display: "none" }}></div>;
-
-  return (
+  return loading ? (
+    <Loader />
+  ) : (
     <>
       <Head>
         <title>Query Flex</title>

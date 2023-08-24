@@ -6,8 +6,15 @@ import { useRouter } from "next/router";
 import useSignUp from "../hooks/useSignUp";
 
 export default function SignUp() {
-  const { error, isError, setIsError, formData, getFormData, handleSubmit } =
-    useSignUp();
+  const {
+    error,
+    isError,
+    setIsError,
+    formData,
+    getFormData,
+    handleSubmit,
+    isVerified,
+  } = useSignUp();
   const router = useRouter();
   const [cardFront] = useState(true);
   const [cardMiddle, setCardMiddle] = useState(true);
@@ -16,7 +23,7 @@ export default function SignUp() {
   return (
     <div className={styles.authMain}>
       <div className={styles.cardMain}>
-        {cardFront ? (
+        {!isVerified ? (
           <div
             className={`${
               cardMiddle ? styles.cardFront : styles.cardFrontafter
@@ -43,7 +50,24 @@ export default function SignUp() {
             </span>
           </div>
         ) : (
-          <></>
+          <div
+            className={`${
+              cardMiddle ? styles.cardFront : styles.cardFrontafter
+            } ${styles.page}`}
+          >
+            <p className={styles.verifiedSignIn}>
+              <h1 className={styles.header}>Verify Your Email</h1>
+              <p className={styles.subheader}>
+                Check your Email for any Verification Link!
+              </p>
+              <span
+                onClick={() => router.push("/auth/sign-in")}
+                className={styles.signIn}
+              >
+                Sign in to your Account?
+              </span>
+            </p>
+          </div>
         )}
         {cardMiddle ? (
           <div

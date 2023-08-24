@@ -19,16 +19,18 @@ export const useCheckAuth = () => {
       if (response?.uid) {
         setEmail(response.email);
         router.push("/landing-page");
+
         setLoading(false);
       } else {
-        if (
-          router.asPath !== "/auth/sign-in" &&
-          router.asPath !== "/auth/sign-up" &&
-          router.asPath !== "/auth/reset-password"
-        ) {
+        if (router.asPath === "/auth/sign-in") {
+          router.push("/auth/sign-in");
+        } else if (router.asPath === "/auth/sign-up") {
+          router.push("/auth/sign-up");
+        } else if (router.asPath === "/auth/reset-password") {
+          router.push("/auth/reset-password");
+        } else {
           router.push("/");
         }
-
         setLoading(false);
       }
     });

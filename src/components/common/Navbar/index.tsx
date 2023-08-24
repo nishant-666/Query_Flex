@@ -13,17 +13,17 @@ export default function Navbar() {
 
       <section className={styles.navbarRight}>
         <button
+          onClick={() => router.push("/")}
+          className={`btn btn-success glass btn-outline ${styles.signInBtn}`}
+        >
+          Home
+        </button>
+        <button
           onClick={() => router.push("/auth/sign-in")}
           className="btn btn-warning glass btn-outline"
         >
           Sign In
         </button>
-        {/* <button
-          onClick={() => router.push("/auth/sign-up")}
-          className={`btn btn-success glass btn-outline ${styles.signInBtn}`}
-        >
-          Get Started
-        </button> */}
       </section>
     </div>
   );

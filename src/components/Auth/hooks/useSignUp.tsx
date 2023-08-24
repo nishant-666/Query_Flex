@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { signUp } from "@/firebase/auth";
+import { signUp, verifyUser } from "@/firebase/auth";
 import { useRouter } from "next/router";
 
 const useSignUp = () => {
@@ -12,7 +12,7 @@ const useSignUp = () => {
 
   const [error, setError] = useState("");
   const [isError, setIsError] = useState(false);
-
+  const [isVerified, setIsVerified] = useState("");
   const [signUpComplete, setSignUpComplete] = useState(false);
 
   const getFormData = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,15 +25,11 @@ const useSignUp = () => {
 
   const handleSubmit = async () => {
     try {
-      await signUp(formData);
-      setSignUpComplete(true);
-
+      let auth = await signUp(formData);
+      let response = await verifyUser(auth.user);
+      setIsVerified(response as string);
+      router.push("/landing-page");
       setError("");
-
-      setTimeout(() => {
-        setSignUpComplete(false);
-        router.push("/landing-page");
-      }, 2000);
     } catch (err: any) {
       const errorCode = err.code;
 
@@ -58,6 +54,7 @@ const useSignUp = () => {
     getFormData,
     handleSubmit,
     signUpComplete,
+    isVerified,
   };
 };
 

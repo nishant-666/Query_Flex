@@ -119,6 +119,35 @@
   }
 }
 
+.verifiedSignIn {
+  .header {
+    margin-top: 40px;
+    font-size: 24px;
+    font-weight: 700;
+    width: 300px;
+  }
+  .subheader {
+    font-size: 17px;
+    margin-top: 10px;
+    width: 320px;
+  }
+
+  .isVerified {
+    position: absolute;
+    bottom: 30px;
+    .isSignIn {
+      font-size: 15px;
+      margin-left: 30px;
+      margin-top: 5px;
+      cursor: pointer;
+      animation: fade-in 1s ease-out;
+      .signIn {
+        color: #10b97e;
+      }
+    }
+  }
+}
+
 @media (max-width: 480px) {
   .authMain {
     display: flex;
