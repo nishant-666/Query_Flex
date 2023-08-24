@@ -25,11 +25,6 @@ export default function Home() {
         <section
           className={`prose flex md:container lg:prose-xl md:mx-auto ${styles.homeMain}`}
         >
-          <div className="lines">
-            <div className="line"></div>
-            <div className="line"></div>
-            <div className="line"></div>
-          </div>
           <h1 className={`justify-center ${styles.header}`}>QueryFlex</h1>
           <p className={`${styles.subheader}`}>
             MultiDB <span className={styles.special}>QueryFlex</span> is an
