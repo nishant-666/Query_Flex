@@ -56,7 +56,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    background-image: linear-gradient(120deg, #000000, #212121 100%);
   }
 }
 

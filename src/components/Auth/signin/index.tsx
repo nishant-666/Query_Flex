@@ -4,24 +4,15 @@ import InputComponent from "@/components/common/Input";
 import { BsArrowRightShort } from "react-icons/bs";
 import useSignIn from "../hooks/useSignIn";
 import { useRouter } from "next/router";
-import MidSignUp from "./MidSignUp";
 
 export default function SignInComponent() {
-  const {
-    error,
-    isError,
-    setIsError,
-    formData,
-    getFormData,
-    handleSubmit,
-    signUpComplete,
-  } = useSignIn();
+  const { error, isError, setIsError, formData, getFormData, handleSubmit } =
+    useSignIn();
 
   const router = useRouter();
   const [cardFront] = useState(true);
   const [cardMiddle, setCardMiddle] = useState(true);
 
-  if (signUpComplete) return <MidSignUp />;
   return (
     <div className={styles.authMain}>
       <div className={`${styles.cardMain}`}>

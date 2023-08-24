@@ -34,7 +34,7 @@ export default function Home() {
 
           <button
             onClick={() => router.push("/auth/sign-up")}
-            className={`btn btn-accent btn-outline sm:btn-sm md:btn-md lg:btn-lg ${styles.getStarted}`}
+            className={`btn btn-success glass btn-outline sm:btn-sm md:btn-md lg:btn-lg ${styles.getStarted}`}
           >
             Get Started
           </button>

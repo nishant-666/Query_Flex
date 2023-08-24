@@ -13,8 +13,6 @@ const useSignIn = () => {
   const [error, setError] = useState("");
   const [isError, setIsError] = useState(false);
 
-  const [signUpComplete, setSignUpComplete] = useState(false);
-
   const getFormData = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIsError(false);
     const { name, value } = event.target;
@@ -25,15 +23,10 @@ const useSignIn = () => {
 
   const handleSubmit = async () => {
     try {
-      setSignUpComplete(true);
       await signIn(formData);
 
       setError("");
-
-      setTimeout(() => {
-        setSignUpComplete(false);
-        router.push("/landing-page");
-      }, 0);
+      router.push("/landing-page");
     } catch (err: any) {
       const errorCode = err.code;
 
@@ -57,7 +50,6 @@ const useSignIn = () => {
     formData,
     getFormData,
     handleSubmit,
-    signUpComplete,
   };
 };
 
