@@ -2,6 +2,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import { auth } from "./firebaseConfig";
 
@@ -27,4 +28,9 @@ export const signIn = (payload: { email: string; password: string }) => {
 
 export const signout = () => {
   signOut(auth);
+};
+
+export const resetPassword = async (email: string) => {
+  await sendPasswordResetEmail(auth, email);
+  return "Please Check your Email";
 };

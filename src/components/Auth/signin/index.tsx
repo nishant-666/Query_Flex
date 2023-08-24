@@ -81,6 +81,13 @@ export default function SignInComponent() {
               Don't Have an Account?{" "}
               <span className={styles.signIn}>Sign Up</span>
             </p>
+
+            <p
+              onClick={() => router.push("/auth/reset-password")}
+              className={styles.forgetPassword}
+            >
+              Forgot Password?
+            </p>
           </div>
         ) : (
           <></>

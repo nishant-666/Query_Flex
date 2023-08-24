@@ -23,7 +23,8 @@ export const useCheckAuth = () => {
       } else {
         if (
           router.asPath !== "/auth/sign-in" &&
-          router.asPath !== "/auth/sign-up"
+          router.asPath !== "/auth/sign-up" &&
+          router.asPath !== "/auth/reset-password"
         ) {
           router.push("/");
         }
