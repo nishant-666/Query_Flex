@@ -88,8 +88,8 @@ export default function LandingComponent({
           }`}
         >
           {responsePrompt
-            .filter((item) => item.content !== "")
-            .map((res, index) =>
+            ?.filter((item) => item.content !== "")
+            ?.map((res, index) =>
               res.role === "user" ? (
                 <div key={index}>
                   <UserRes text={res.content} />

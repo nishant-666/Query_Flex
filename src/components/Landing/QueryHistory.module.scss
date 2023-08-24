@@ -1,15 +1,18 @@
 .queryHistory {
-  position: sticky;
+  position: fixed;
+  height: 100vh;
+  overflow: scroll;
   top: 20px;
-
+  padding-right: 40px;
+  width: 25%;
   .queries {
     height: 60px;
     display: flex;
     padding: 5px 15px;
     align-items: center;
-    margin-top: 0px;
     border-radius: 5px;
     cursor: pointer;
+    justify-content: space-between;
   }
 
   .selected {
@@ -17,13 +20,28 @@
     display: flex;
     padding: 5px 15px;
     align-items: center;
-    margin-top: 0px;
     border-radius: 5px;
     cursor: pointer;
+    justify-content: space-between;
     background-color: #272727;
   }
 
   .queries:hover {
     background-color: #393939;
   }
+  .deleteIcon {
+    color: rgb(170, 170, 170);
+  }
+  .deleteIcon:hover {
+    color: white;
+  }
+}
+
+.queryHistory::-webkit-scrollbar {
+  display: none;
+}
+
+.queryHistory {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
