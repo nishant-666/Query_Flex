@@ -6,15 +6,8 @@ import { useRouter } from "next/router";
 import useSignUp from "../hooks/useSignUp";
 
 export default function SignUp() {
-  const {
-    error,
-    isError,
-    setIsError,
-    formData,
-    getFormData,
-    handleSubmit,
-    signUpComplete,
-  } = useSignUp();
+  const { error, isError, setIsError, formData, getFormData, handleSubmit } =
+    useSignUp();
   const router = useRouter();
   const [cardFront] = useState(true);
   const [cardMiddle, setCardMiddle] = useState(true);

@@ -9,7 +9,7 @@ import { useResetPass } from "../hooks/useResetPass";
 
 export default function ResetPasswordComponent() {
   const { isError, setIsError, formData, getFormData } = useSignIn();
-  let { resetPass, response } = useResetPass(formData.email);
+  const { resetPass, response } = useResetPass(formData.email);
   const router = useRouter();
   const [cardMiddle] = useState(true);
 

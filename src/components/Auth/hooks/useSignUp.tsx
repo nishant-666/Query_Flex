@@ -18,7 +18,7 @@ const useSignUp = () => {
   const getFormData = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIsError(false);
     const { name, value } = event.target;
-    let input = { [name]: value };
+    const input = { [name]: value };
 
     setFormData((prev) => ({ ...prev, ...input }));
   };

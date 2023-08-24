@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./Landing.module.scss";
 
 import { AiOutlineSend } from "react-icons/ai";
@@ -15,6 +15,7 @@ export default function LandingComponent({
   currentId,
 }: LandingComponent) {
   const contentRef = useRef<HTMLDivElement>(null);
+  const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const { response, isLoading, prompt, setPrompt, responsePrompt, content } =
     useOpenAI(currentDoc);
 
@@ -27,7 +28,7 @@ export default function LandingComponent({
   };
 
   const saveQuery = async (currentId: string) => {
-    let query = {
+    const query = {
       responsePrompt: responsePrompt?.filter((res) => res.content !== ""),
     };
     if (responsePrompt?.length > 1) {
@@ -61,6 +62,12 @@ export default function LandingComponent({
       });
     }
   }, [content.length]);
+
+  useEffect(() => {
+    if (textAreaRef.current) {
+      textAreaRef.current.focus();
+    }
+  }, [currentId]);
 
   return (
     <div className={styles.landing} ref={contentRef}>
@@ -103,6 +110,21 @@ export default function LandingComponent({
                 </div>
               )
             )}
+
+          {responsePrompt?.length === 0 ? (
+            <section
+              className={`prose flex md:container lg:prose-xl md:mx-auto ${styles.homeMain}`}
+            >
+              <h1 className={`justify-center ${styles.header}`}>QueryFlex</h1>
+              <p className={`${styles.subheader}`}>
+                MultiDB <span className={styles.special}>QueryFlex</span> is an
+                all-in-one Database Query Generator designed for developers
+                working with various database systems!
+              </p>
+            </section>
+          ) : (
+            <></>
+          )}
         </div>
       )}
 
@@ -114,6 +136,7 @@ export default function LandingComponent({
         )}
         <div className={styles.promtInputContainer}>
           <textarea
+            ref={textAreaRef}
             name="promt"
             value={prompt}
             onChange={(event) => handleTextareaChange(event)}

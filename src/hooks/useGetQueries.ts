@@ -14,7 +14,7 @@ export const getQueries = () => {
   const [queries, setQueries] = useState([{}]);
   const getQuery = async () => {
     if (auth.currentUser?.email) {
-      let emailQuery = query(
+      const emailQuery = query(
         queryCollection,
         where("userEmail", "==", auth.currentUser?.email),
         orderBy("id", "desc")

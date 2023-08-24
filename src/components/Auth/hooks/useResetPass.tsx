@@ -5,7 +5,7 @@ export function useResetPass(email: string) {
   const [response, setResponse] = useState("");
 
   const resetPass = async () => {
-    let res = await resetPassword(email);
+    const res = await resetPassword(email);
     setResponse(res as any);
   };
 

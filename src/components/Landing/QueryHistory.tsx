@@ -13,7 +13,7 @@ export default function QueryHistory({
   setCurrentId,
   currentId,
 }: QueryHistory) {
-  let { queries } = getQueries();
+  const { queries } = getQueries();
   const router = useRouter();
   return (
     <div className={styles.queryHistory}>

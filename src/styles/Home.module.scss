@@ -7,8 +7,7 @@
 .homeMain {
   width: 100%;
   display: flex;
-  min-height: 93vh;
-  height: auto;
+  margin-top: 100px;
   justify-content: center;
   flex-direction: column;
   align-items: center;
@@ -52,17 +51,14 @@
 }
 
 .features {
-  min-height: 95vh;
-  height: auto;
   width: 100%;
   display: flex;
   font-size: 14px;
   padding: 50px;
-  // justify-content: center;
   text-align: center;
   flex-direction: column;
   align-items: center;
-  padding-top: 20px;
+
   font-family: "Bricolage Grotesque";
   transform-style: preserve-3d;
   .header {
@@ -79,14 +75,55 @@
       color: white;
       padding: 20px;
       animation: slide-in-bottom 1s ease-in;
-      background-image: linear-gradient(to right, #232526, #414345);
+      display: flex;
+      align-items: center;
       border-radius: 16px;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      box-shadow: 10px 4px 30px rgba(0, 0, 0, 0.6);
       backdrop-filter: blur(8.1px);
       -webkit-backdrop-filter: blur(8.1px);
 
       .subheader {
         font-size: 0.9em;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .features {
+    width: 100%;
+    display: flex;
+    font-size: 14px;
+    padding: 50px;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    font-family: "Bricolage Grotesque";
+    transform-style: preserve-3d;
+    .header {
+      font-weight: 700;
+    }
+    .featuresPoints {
+      display: grid;
+      grid-template-columns: repeat(1, auto);
+      gap: 30px;
+      width: 100%;
+      font-size: 20px;
+
+      .featurePoint {
+        color: white;
+        padding: 20px;
+        animation: slide-in-bottom 1s ease-in;
+        box-shadow: 10px 4px 30px rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(8.1px);
+        -webkit-backdrop-filter: blur(8.1px);
+        border-radius: 16px;
+
+        .subheader {
+          font-size: 0.9em;
+        }
       }
     }
   }

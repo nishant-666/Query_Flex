@@ -22,7 +22,7 @@ export function useOpenAI(currentDoc: never[]) {
   const [prompt, setPrompt] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const response = async () => {
-    let res = [...responsePrompt, { role: "user", content: prompt }];
+    const res = [...responsePrompt, { role: "user", content: prompt }];
     setResponsePrompt((prev) => [...prev, { role: "user", content: prompt }]);
     setPrompt("");
     setIsLoading(true);

@@ -7,7 +7,7 @@ import {
 import { auth } from "./firebaseConfig";
 
 export const signUp = (payload: { email: string; password: string }) => {
-  let response = createUserWithEmailAndPassword(
+  const response = createUserWithEmailAndPassword(
     auth,
     payload.email,
     payload.password
@@ -17,7 +17,7 @@ export const signUp = (payload: { email: string; password: string }) => {
 };
 
 export const signIn = (payload: { email: string; password: string }) => {
-  let response = signInWithEmailAndPassword(
+  const response = signInWithEmailAndPassword(
     auth,
     payload.email,
     payload.password
