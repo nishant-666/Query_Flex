@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Configuration, OpenAIApi } from "openai";
 
 const configuration = new Configuration({

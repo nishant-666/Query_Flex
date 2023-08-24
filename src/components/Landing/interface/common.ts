@@ -16,3 +16,7 @@ interface LandingComponent {
   currentId: string;
   setCurrentId: Function;
 }
+
+interface LandingSuggestions {
+  setPrompt: Function;
+}

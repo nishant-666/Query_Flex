@@ -7,6 +7,7 @@ import SystemRes from "./SystemRes";
 import Loader from "../common/Loader";
 import { addQuery, updateQuery } from "@/firebase/firestore";
 import { useOpenAI } from "./hooks/useOpenAI";
+import LandingSuggestions from "./LandingSuggestions";
 
 export default function LandingComponent({
   currentDoc,
@@ -27,9 +28,9 @@ export default function LandingComponent({
 
   const saveQuery = async (currentId: string) => {
     let query = {
-      responsePrompt: responsePrompt.filter((res) => res.content !== ""),
+      responsePrompt: responsePrompt?.filter((res) => res.content !== ""),
     };
-    if (responsePrompt.length > 1) {
+    if (responsePrompt?.length > 1) {
       if (isEdit) {
         updateQuery(currentId, query);
       } else {
@@ -102,7 +103,13 @@ export default function LandingComponent({
             )}
         </div>
       )}
+
       <section className={styles.fixed}>
+        {responsePrompt.length === 0 ? (
+          <LandingSuggestions setPrompt={setPrompt} />
+        ) : (
+          <></>
+        )}
         <div className={styles.promtInputContainer}>
           <textarea
             name="promt"
@@ -112,7 +119,7 @@ export default function LandingComponent({
             className={styles.promtInput}
           />
 
-          {!isLoading ? (
+          {!isLoading && prompt.length ? (
             <div className={styles.sendButton}>
               <AiOutlineSend
                 className={styles.send}
