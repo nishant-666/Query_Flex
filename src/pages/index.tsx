@@ -5,6 +5,7 @@ import styles from "@/styles/Home.module.scss";
 import { useRouter } from "next/router";
 import { useCheckAuth } from "@/hooks/useCheckAuth";
 import Loader from "@/components/common/Loader";
+import Link from "next/link";
 
 export default function Home() {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
@@ -33,11 +34,16 @@ export default function Home() {
             >
               Get Started
             </button>
-            <button
-              className={`btn btn-info glass btn-outline m-3 sm:btn-sm md:btn-md lg:btn-lg ${styles.getStarted}`}
+            <Link
+              target="_blank"
+              href="https://youtu.be/1bPgHKDzcFo?si=crkMylxVBs3bDhuS"
             >
-              Request Demo
-            </button>
+              <button
+                className={`btn btn-info glass btn-outline m-3 sm:btn-sm md:btn-md lg:btn-lg ${styles.getStarted}`}
+              >
+                Request Demo
+              </button>
+            </Link>
           </div>
         </section>
 
