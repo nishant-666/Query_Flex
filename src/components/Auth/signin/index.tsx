@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "../Auth.module.scss";
 import InputComponent from "@/components/common/Input";
 import { BsArrowRightShort } from "react-icons/bs";
+import { AiOutlineLock } from "react-icons/ai";
 import useSignIn from "../hooks/useSignIn";
 import { useRouter } from "next/router";
 
@@ -76,13 +77,15 @@ export default function SignInComponent() {
               Don't Have an Account?{" "}
               <span className={styles.signIn}>Sign Up</span>
             </p>
-
-            <p
-              onClick={() => router.push("/auth/reset-password")}
-              className={styles.forgetPassword}
-            >
-              Forgot Password?
-            </p>
+            <div className={styles.forgetPasswordContainer}>
+              <AiOutlineLock />
+              <p
+                onClick={() => router.push("/auth/reset-password")}
+                className={styles.forgetPassword}
+              >
+                Forgot Password?
+              </p>
+            </div>
           </div>
         ) : (
           <></>

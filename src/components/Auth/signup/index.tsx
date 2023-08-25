@@ -4,6 +4,7 @@ import InputComponent from "@/components/common/Input";
 import { BsArrowRightShort } from "react-icons/bs";
 import { useRouter } from "next/router";
 import useSignUp from "../hooks/useSignUp";
+import { BiReset } from "react-icons/bi";
 
 export default function SignUp() {
   const {
@@ -47,6 +48,22 @@ export default function SignUp() {
             <span className={styles.error}>
               {isError ? (error ? error : "Password Please") : ""}
             </span>
+            <div className={styles.isSignIn}>
+              Already Have an Account?{" "}
+              <span
+                onClick={() => router.push("/auth/sign-in")}
+                className={styles.signIn}
+              >
+                Sign In
+              </span>
+            </div>
+            <div
+              className={styles.isSignIn}
+              onClick={() => setCardMiddle(true)}
+            >
+              <BiReset color="#098157" size={20} />
+              <span className={styles.signIn}>Reset Form?</span>
+            </div>
           </div>
         ) : (
           <div
@@ -54,7 +71,7 @@ export default function SignUp() {
               cardMiddle ? styles.cardFront : styles.cardFrontafter
             } ${styles.page}`}
           >
-            <p className={styles.verifiedSignIn}>
+            <div className={styles.verifiedSignIn}>
               <h1 className={styles.header}>Verify Your Email</h1>
               <p className={styles.subheader}>
                 Check your Email for any Verification Link!
@@ -65,7 +82,7 @@ export default function SignUp() {
               >
                 Sign in to your Account?
               </span>
-            </p>
+            </div>
           </div>
         )}
         {cardMiddle ? (
@@ -94,6 +111,21 @@ export default function SignUp() {
             <span className={styles.error}>
               {isError ? "Email is Required" : ""}
             </span>
+
+            <div className={styles.isSignIn}>
+              Already Have an Account?{" "}
+              <span
+                onClick={() => router.push("/auth/sign-in")}
+                className={styles.signIn}
+              >
+                Sign In
+              </span>
+            </div>
+
+            <div className={styles.isSignIn} onClick={() => setCardBack(true)}>
+              <BiReset color="#098157" size={20} />
+              <span className={styles.signIn}>Reset Form?</span>
+            </div>
           </div>
         ) : (
           <></>

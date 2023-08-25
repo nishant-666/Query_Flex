@@ -100,16 +100,17 @@
     margin-left: 40px;
     margin-top: 5px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
     animation: fade-in 1s ease-out;
     .signIn {
-      color: #10b97e;
+      color: #098157;
     }
   }
 
   .forgetPassword {
     font-size: 14px;
-    margin-left: 40px;
-    margin-top: 15px;
     cursor: pointer;
   }
 
@@ -197,9 +198,18 @@
 
     .forgetPassword {
       font-size: 13px;
+      cursor: pointer;
+    }
+
+    .forgetPasswordContainer {
+      font-size: 17px;
       margin-left: 30px;
       margin-top: 15px;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      animation: fade-in 1s ease-out;
     }
 
     .resetSend {
@@ -243,6 +253,20 @@
     .signIn {
       color: #10b97e;
     }
+  }
+}
+
+.forgetPasswordContainer {
+  font-size: 14px;
+  margin-left: 40px;
+  margin-top: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  animation: fade-in 1s ease-out;
+  .signIn {
+    color: #10b97e;
   }
 }
 
