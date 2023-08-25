@@ -47,6 +47,15 @@
   scrollbar-width: none; /* Firefox */
 }
 
+.logoutBtnMobile {
+  display: none;
+}
+.logoutBtn {
+  position: absolute;
+  bottom: 60px;
+  width: 85%;
+}
+
 @media (max-width: 480px) {
   .queryHistory {
     position: fixed;
@@ -89,5 +98,15 @@
     display: flex;
     justify-content: center;
     width: 100%;
+  }
+
+  .logoutBtnMobile {
+    display: block;
+    position: absolute;
+    bottom: 70px;
+    width: 100%;
+  }
+  .logoutBtn {
+    display: none;
   }
 }

@@ -62,7 +62,7 @@ export default function QueryHistory({
             </div>
           ))}
         </div>
-        <div className={styles.buttonContainer}>
+        <div className={styles.logoutBtn}>
           <button
             className="btn glass btn-outline btn-block mt-5"
             onClick={() => {
@@ -73,6 +73,17 @@ export default function QueryHistory({
             Logout
           </button>
         </div>
+      </div>
+      <div className={styles.logoutBtnMobile}>
+        <button
+          className="btn glass btn-outline btn-block mt-5"
+          onClick={() => {
+            signout();
+            router.push("/");
+          }}
+        >
+          Logout
+        </button>
       </div>
     </div>
   );
