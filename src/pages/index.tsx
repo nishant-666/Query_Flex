@@ -17,6 +17,19 @@ export default function Home() {
   ) : (
     <>
       <div className={styles.home}>
+        <div className={styles.producthunt}>
+          <a
+            href="https://www.producthunt.com/posts/queryflex?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-queryflex"
+            target="_blank"
+          >
+            <img
+              src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=411415&theme=dark"
+              alt="QueryFlex - All&#0045;in&#0045;one&#0032;Database&#0032;Query&#0032;Generator&#0032;designed&#0032;for&#0032;developers&#0046; | Product Hunt"
+              width="250"
+              height="54"
+            />
+          </a>
+        </div>
         <Navbar />
         <section
           className={`prose flex md:container lg:prose-xl md:mx-auto ${styles.homeMain}`}

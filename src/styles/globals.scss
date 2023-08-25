@@ -4,11 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.producthunt {
-  position: absolute;
-  padding: 20px;
-}
-
 @media (max-width: 480px) {
   .producthunt {
     position: absolute;

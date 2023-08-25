@@ -9,7 +9,7 @@ export default function Landing() {
   const router = useRouter();
   const { loading } = useCheckAuth();
   const { isVerified } = useCheckVerification();
-  console.log(isVerified);
+
   if (loading) return <div style={{ display: "none" }}></div>;
   return isVerified || router.query.isVerified === "true" ? (
     <LandingMain />
