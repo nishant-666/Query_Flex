@@ -8,6 +8,7 @@ interface QueryHistory {
   setIsEdit: Function;
   setCurrentId: Function;
   currentId: string;
+  setIsDrawerOpen: Function;
 }
 
 interface LandingComponent {

@@ -3,12 +3,6 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-interface User {
-  uid: string;
-  displayName: string | null;
-  email: string | null;
-}
-
 export const useCheckAuth = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
@@ -18,8 +12,14 @@ export const useCheckAuth = () => {
     const unsubscribe = onAuthStateChanged(auth, (response: any) => {
       if (response?.uid) {
         setEmail(response.email);
-        router.push("/landing-page");
 
+        auth.currentUser?.reload().then(() => {
+          if (auth.currentUser?.emailVerified) {
+            router.push(`/landing-page?isVerified=true`);
+          } else {
+            router.push(`/landing-page?isVerified=false`);
+          }
+        });
         setLoading(false);
       } else {
         if (router.asPath === "/auth/sign-in") {

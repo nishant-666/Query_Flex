@@ -5,6 +5,7 @@
   top: 20px;
   padding-right: 40px;
   width: 25%;
+  padding-bottom: 170px;
   .queries {
     height: 60px;
     display: flex;
@@ -46,15 +47,47 @@
   scrollbar-width: none; /* Firefox */
 }
 
-.logoutBtn {
-  position: absolute;
-  bottom: 50px;
-  width: 100%;
-  padding-right: 40px;
-}
-
 @media (max-width: 480px) {
   .queryHistory {
-    display: none;
+    position: fixed;
+    height: 100vh;
+    overflow: scroll;
+    top: 40px;
+    margin-top: 30px;
+    width: 110%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .queries {
+    height: 60px;
+    display: flex;
+    padding: 5px 15px;
+
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    gap: 30px;
+    justify-content: space-between;
+  }
+
+  .selected {
+    height: 60px;
+    display: flex;
+    padding: 5px 15px;
+
+    align-items: center;
+    gap: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    justify-content: space-between;
+    background-color: #272727;
+  }
+
+  .buttonContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
 }

@@ -10,49 +10,44 @@ export default function SignInComponent() {
     useSignIn();
 
   const router = useRouter();
-  const [cardFront] = useState(true);
   const [cardMiddle, setCardMiddle] = useState(true);
 
   return (
     <div className={styles.authMain}>
       <div className={`${styles.cardMain}`}>
-        {cardFront ? (
+        <div
+          className={`${
+            cardMiddle ? styles.cardFront : styles.cardFrontafter
+          } ${styles.page}`}
+        >
+          <h1 className={styles.header}>Password</h1>
+
+          <InputComponent
+            name="password"
+            type="password"
+            onChange={getFormData}
+            placeholder="Please Enter Your Password"
+          />
           <div
-            className={`${
-              cardMiddle ? styles.cardFront : styles.cardFrontafter
-            } ${styles.page}`}
+            className={styles.nextIcon}
+            onClick={() => {
+              formData.password ? handleSubmit() : setIsError(true);
+            }}
           >
-            <h1 className={styles.header}>Password</h1>
-
-            <InputComponent
-              name="password"
-              type="password"
-              onChange={getFormData}
-              placeholder="Please Enter Your Password"
-            />
-            <div
-              className={styles.nextIcon}
-              onClick={() => {
-                formData.password ? handleSubmit() : setIsError(true);
-              }}
-            >
-              <BsArrowRightShort size={20} color="white" />
-            </div>
-            <span className={styles.error}>
-              {isError ? (error ? error : "Password is Required") : ""}
-            </span>
-
-            <p
-              onClick={() => router.push("/auth/sign-up")}
-              className={styles.isSignIn}
-            >
-              Don't Have an Account?{" "}
-              <span className={styles.signIn}>Sign Up</span>
-            </p>
+            <BsArrowRightShort size={20} color="white" />
           </div>
-        ) : (
-          <></>
-        )}
+          <span className={styles.error}>
+            {isError ? (error ? error : "Password is Required") : ""}
+          </span>
+
+          <p
+            onClick={() => router.push("/auth/sign-up")}
+            className={styles.isSignIn}
+          >
+            Don't Have an Account?{" "}
+            <span className={styles.signIn}>Sign Up</span>
+          </p>
+        </div>
         {cardMiddle ? (
           <div className={`${styles.page}`}>
             <h1 className={styles.header}>Your Email</h1>

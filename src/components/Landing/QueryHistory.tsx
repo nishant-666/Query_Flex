@@ -12,62 +12,67 @@ export default function QueryHistory({
   setIsEdit,
   setCurrentId,
   currentId,
+  setIsDrawerOpen,
 }: QueryHistory) {
   const { queries } = getQueries();
   const router = useRouter();
   return (
     <div className={styles.queryHistory}>
-      <button
-        onClick={() => {
-          setCurrentDoc([]);
-          setIsEdit(false);
-          setCurrentId(Date.now());
-        }}
-        className="btn btn-success glass btn-outline btn-block"
-      >
-        New Query
-      </button>
-
       <div className="mt-5">
-        {queries?.map((query: any, index: number) => (
-          <div
-            key={index}
+        <div className={styles.buttonContainer}>
+          <button
             onClick={() => {
-              getCurrentDoc(query.id);
-              setIsEdit(true);
+              setCurrentDoc([]);
+              setIsEdit(false);
+              setCurrentId(Date.now());
+              setIsDrawerOpen(false);
             }}
-            className={
-              currentId === query.id ? styles.selected : styles.queries
-            }
+            className="btn btn-success glass btn-outline btn-block"
           >
-            <div>
-              {query?.responsePrompt?.[0]?.content.length > 25
-                ? `${query?.responsePrompt?.[0]?.content.slice(0, 25)}..`
-                : query?.responsePrompt?.[0]?.content}
+            New Query
+          </button>
+        </div>
+        <div className="mt-8">
+          {queries?.map((query: any, index: number) => (
+            <div
+              key={index}
+              onClick={() => {
+                getCurrentDoc(query.id);
+                setIsEdit(true);
+                setIsDrawerOpen(false);
+              }}
+              className={
+                currentId === query.id ? styles.selected : styles.queries
+              }
+            >
+              <div>
+                {query?.responsePrompt?.[0]?.content.length > 25
+                  ? `${query?.responsePrompt?.[0]?.content.slice(0, 25)}..`
+                  : query?.responsePrompt?.[0]?.content}
+              </div>
+              {currentId === query.id ? (
+                <AiOutlineDelete
+                  className={styles.deleteIcon}
+                  onClick={() => deleteQuery(query.id)}
+                  size={20}
+                />
+              ) : (
+                <></>
+              )}
             </div>
-            {currentId === query.id ? (
-              <AiOutlineDelete
-                className={styles.deleteIcon}
-                onClick={() => deleteQuery(query.id)}
-                size={20}
-              />
-            ) : (
-              <></>
-            )}
-          </div>
-        ))}
-      </div>
-
-      <div className={styles.logoutBtn}>
-        <button
-          className="btn glass btn-outline btn-block"
-          onClick={() => {
-            signout();
-            router.push("/");
-          }}
-        >
-          Logout
-        </button>
+          ))}
+        </div>
+        <div className={styles.buttonContainer}>
+          <button
+            className="btn glass btn-outline btn-block mt-5"
+            onClick={() => {
+              signout();
+              router.push("/");
+            }}
+          >
+            Logout
+          </button>
+        </div>
       </div>
     </div>
   );

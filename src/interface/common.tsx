@@ -6,6 +6,12 @@ interface commonInput {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
+interface Drawer {
+  isDrawerOpen: boolean;
+  setIsDrawerOpen: Function;
+  children: React.ReactNode;
+}
+
 interface authState {
   authState: { uid: string };
 }

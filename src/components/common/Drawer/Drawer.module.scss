@@ -1,0 +1,29 @@
+.menuIcon {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .menuIcon {
+    display: block !important;
+    margin: 20px;
+  }
+
+  .queryDrawerOpen {
+    display: block;
+    position: fixed;
+    width: 100%;
+    background-color: #212121;
+    height: auto;
+    min-height: 100vh;
+    // animation: slide-in-left 1s ease-in;
+  }
+
+  .queryDrawerClose {
+    display: block;
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    height: auto;
+    min-height: 100vh;
+  }
+}

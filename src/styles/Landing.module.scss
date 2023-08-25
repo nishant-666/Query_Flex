@@ -1,6 +1,13 @@
 .landingPage {
   width: 100%;
   display: flex;
+  .menuIcon {
+    display: none;
+  }
+}
+
+.menuIconContainer {
+  display: none;
 }
 
 .queryHistory {
@@ -15,11 +22,26 @@
 
 .landingComponent {
   width: 75%;
+  background-color: #212121;
   // margin-left: 300px;
+}
+
+.queryDrawer {
+  display: none;
 }
 
 @media (max-width: 480px) {
   .landingPage {
+    width: 100%;
+    font-family: "Bricolage Grotesque";
+  }
+  .menuIconContainer {
+    position: fixed;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    background-color: black !important;
+    font-weight: 700;
     width: 100%;
   }
   .queryHistory {
@@ -28,5 +50,22 @@
 
   .landingComponent {
     width: 100%;
+  }
+
+  .menuIcon {
+    display: flex !important;
+    margin: 20px;
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0%);
+    opacity: 1;
   }
 }

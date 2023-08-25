@@ -1,19 +1,20 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { auth } from "@/firebase/firebaseConfig";
+import { useRouter } from "next/router";
 
 export default function useCheckVerification() {
-  const [verificationLoading, setVerificationLoading] = useState(true);
-  const [verificationChecked, setVerificationChecked] = useState(false);
+  const router = useRouter();
+
   useEffect(() => {
-    setVerificationLoading(false);
     const checkForVerifiedInterval = setInterval(() => {
       auth.currentUser?.reload().then(() => {
         if (auth.currentUser?.emailVerified) {
           clearInterval(checkForVerifiedInterval);
-          setVerificationChecked(true);
+          router.push(`/landing-page?isVerified=true`);
+        } else {
+          router.push(`/landing-page?isVerified=false`);
         }
       });
     }, 1000);
   }, []);
-  return { verificationChecked, verificationLoading };
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import styles from "./Landing.module.scss";
-
+import Logo from "@/assets/logo.png";
+import Image from "next/image";
 import { AiOutlineSend } from "react-icons/ai";
 import UserRes from "./UserRes";
 import SystemRes from "./SystemRes";
@@ -97,6 +98,15 @@ export default function LandingComponent({
             !isLoading ? styles.landingMain : styles.landingMainTransparent
           }`}
         >
+          <div className={styles.logoMobile}>
+            <Image
+              className={styles.logo}
+              src={Logo}
+              width={100}
+              height={100}
+              alt="Logo"
+            />
+          </div>
           {responsePrompt
             ?.filter((item) => item.content !== "")
             ?.map((res, index) =>
@@ -115,6 +125,7 @@ export default function LandingComponent({
             <section
               className={`prose flex md:container lg:prose-xl md:mx-auto ${styles.homeMain}`}
             >
+              <Image className={styles.logo} src={Logo} alt="Logo" />
               <h1 className={`justify-center ${styles.header}`}>QueryFlex</h1>
               <p className={`${styles.subheader}`}>
                 MultiDB <span className={styles.special}>QueryFlex</span> is an

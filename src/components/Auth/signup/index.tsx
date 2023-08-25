@@ -16,7 +16,6 @@ export default function SignUp() {
     isVerified,
   } = useSignUp();
   const router = useRouter();
-  const [cardFront] = useState(true);
   const [cardMiddle, setCardMiddle] = useState(true);
   const [cardBack, setCardBack] = useState(true);
 
