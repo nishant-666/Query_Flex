@@ -1,6 +1,7 @@
 import React from "react";
 import AuthComponent from "@/components/Auth/signup";
 import styles from "../SignUp.module.scss";
+import Navbar from "@/components/common/Navbar";
 import { useCheckAuth } from "@/hooks/useCheckAuth";
 
 export default function SignUp() {
