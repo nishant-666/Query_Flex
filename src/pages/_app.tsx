@@ -4,6 +4,7 @@ import { type AppType } from "next/app";
 import { api } from "@/utils/api";
 import Head from "next/head";
 import "@/styles/globals.scss";
+import Navbar from "@/components/common/Navbar";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -21,7 +22,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <Navbar />
       <Component {...pageProps} />
     </SessionProvider>
   );

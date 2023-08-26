@@ -5,6 +5,9 @@
   gap: 20px;
   padding-top: 40px;
   font-family: "Bricolage Grotesque";
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 
 .navbarLeft {
@@ -27,6 +30,9 @@
 }
 
 @media (max-width: 480px) {
+  .navbar {
+    display: none !important;
+  }
   .navbarLeft {
     display: none;
   }

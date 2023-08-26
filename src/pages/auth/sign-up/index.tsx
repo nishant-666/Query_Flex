@@ -1,7 +1,6 @@
 import React from "react";
 import AuthComponent from "@/components/Auth/signup";
 import styles from "../SignUp.module.scss";
-import Navbar from "@/components/common/Navbar";
 import { useCheckAuth } from "@/hooks/useCheckAuth";
 
 export default function SignUp() {
@@ -10,8 +9,6 @@ export default function SignUp() {
   if (loading) return <div style={{ display: "none" }}></div>;
   return (
     <div className={styles.signupMain}>
-      <Navbar />
-
       <AuthComponent />
     </div>
   );

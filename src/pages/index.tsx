@@ -1,6 +1,6 @@
 import React from "react";
 import { api } from "@/utils/api";
-import Navbar from "@/components/common/Navbar";
+
 import styles from "@/styles/Home.module.scss";
 import { useRouter } from "next/router";
 import { useCheckAuth } from "@/hooks/useCheckAuth";
@@ -30,7 +30,7 @@ export default function Home() {
             />
           </a>
         </div>
-        <Navbar />
+
         <section
           className={`prose flex md:container lg:prose-xl md:mx-auto ${styles.homeMain}`}
         >
