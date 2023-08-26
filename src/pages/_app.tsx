@@ -3,14 +3,15 @@ import { SessionProvider } from "next-auth/react";
 import { type AppType } from "next/app";
 import { api } from "@/utils/api";
 import Head from "next/head";
-import Image from "next/image";
 import "@/styles/globals.scss";
 import Navbar from "@/components/common/Navbar";
+import { useRouter } from "next/router";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
+  const router = useRouter();
   return (
     <SessionProvider session={session}>
       <Head>
@@ -23,7 +24,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar />
+      {router.query.isVerified === "true" ? <></> : <Navbar />}
 
       <Component {...pageProps} />
     </SessionProvider>
