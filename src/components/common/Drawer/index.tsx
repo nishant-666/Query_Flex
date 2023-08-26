@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./Drawer.module.scss";
 import { AiOutlineMenu } from "react-icons/ai";
 

@@ -5,6 +5,7 @@ import styles from "@/styles/Landing.module.scss";
 import { showCurrentQuery } from "@/firebase/firestore";
 import { AiOutlineMenu } from "react-icons/ai";
 import Drawer from "../common/Drawer";
+import { auth } from "@/firebase/firebaseConfig";
 
 export default function LandingMain() {
   const [currentDoc, setCurrentDoc] = useState([]);
@@ -15,6 +16,7 @@ export default function LandingMain() {
     await showCurrentQuery(id, setCurrentDoc);
     setCurrentId(Number(id));
   };
+
   return (
     <div className={styles.landingPage}>
       <div className={styles.menuIconContainer}>
@@ -23,7 +25,7 @@ export default function LandingMain() {
           className={styles.menuIcon}
           size={30}
         />
-        Query
+        {auth?.currentUser?.email}
       </div>
       <div className={styles.queryHistory}>
         <QueryHistory
