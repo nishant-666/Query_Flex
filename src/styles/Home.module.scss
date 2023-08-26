@@ -3,7 +3,9 @@
   right: 20px;
   top: 25px;
 }
-
+.producthunt {
+  padding: 20px;
+}
 .homeMain {
   width: 100%;
   display: flex;
@@ -91,6 +93,11 @@
 }
 
 @media (max-width: 480px) {
+  .producthunt {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
   .features {
     width: 100%;
     display: flex;
