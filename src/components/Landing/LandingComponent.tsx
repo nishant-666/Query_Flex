@@ -54,7 +54,6 @@ export default function LandingComponent({
       saveQuery(currentId);
     }
   }, [content]);
-
   useEffect(() => {
     if (contentRef.current) {
       window.scrollTo({
