@@ -1,6 +1,6 @@
-## Product Name: MultiDB QueryGen
+## Product Name: QueryFlex
 
-## MultiDB QueryGen is an all-in-one SQL command generator designed for developers working with various database systems. Whether you're using SQL, PostgreSQL, Firebase, MongoDB, Prisma, or other platforms, MultiDB QueryGen streamlines query creation and optimization.
+## QueryFlex is an all-in-one SQL command generator designed for developers working with various database systems. Whether you're using SQL, PostgreSQL, Firebase, MongoDB, Prisma, or other platforms, QueryFlex streamlines query creation and optimization.
 
 ### Features:
 
