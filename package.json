@@ -63,5 +63,8 @@
   },
   "ct3aMetadata": {
     "initVersion": "7.18.0"
+  },
+  "overrides": {
+    "protobufjs@<=7.2.5": "7.2.5"
   }
 }
